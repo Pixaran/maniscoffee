@@ -794,7 +794,7 @@ div.form-header-group.header-large {
     }
   
     .supernova {
-      background-color: #d1ae5c;
+      background-color: #643200;
     }
     .supernova body {
       background: transparent;
@@ -849,7 +849,14 @@ div.form-header-group.header-large {
   }
   
   /*PREFERENCES STYLE*//*__INSPECT_SEPERATOR__*/
-
+.form-label.form-label-auto {
+        
+      display: block;
+      float: none;
+      text-align: left;
+      width: 100%;
+    
+      }
     /* Injected CSS Code */
 </style>
 
@@ -858,7 +865,7 @@ div.form-header-group.header-large {
 <script src="https://cdn.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
 <script src="https://cdn.jotfor.ms/static/jotform.forms.js?3.3.25423" type="text/javascript"></script>
 <script src="https://js.jotform.com/vendor/postMessage.js?3.3.25423" type="text/javascript"></script>
-<script src="https://js.jotform.com/WidgetsServer.js?v=1621258764302" type="text/javascript"></script>
+<script src="https://js.jotform.com/WidgetsServer.js?v=1621264715886" type="text/javascript"></script>
 <script type="text/javascript">
    JotForm.setConditions([{"action":[{"id":"action_1581690116457","visibility":"Hide","isError":false,"field":"10"}],"id":"1581690133174","index":"0","link":"Any","priority":"0","terms":[{"id":"term_1581690116457","field":"17","operator":"isEmpty","value":"","isError":false}],"type":"field"},{"action":[{"id":"action_0_1581690045611","visibility":"Hide","isError":false,"field":"10"}],"id":"1581689801697","index":"1","link":"Any","priority":"1","terms":[{"id":"term_0_1581690045611","field":"17","operator":"equals","value":"Yes","isError":false}],"type":"field"},{"action":[{"field":"11","visibility":"Show","id":"action_1_1581689802691"}],"id":"1581689543679","index":"2","link":"Any","priority":"2","terms":[{"field":"15","operator":"equals","value":"Yes"}],"type":"field"},{"action":[{"field":"18","visibility":"Show","id":"action_0_1581945983644","isError":false}],"id":"1581689543680","index":"3","link":"Any","priority":"3","terms":[{"field":"15","operator":"equals","value":"Yes","id":"term_0_1581945983644","isError":false}],"type":"field"},{"action":[{"field":"10","visibility":"Show","id":"action_3_1581689802691"}],"id":"1581689543681","index":"4","link":"Any","priority":"4","terms":[{"field":"15","operator":"equals","value":"Yes"}],"type":"field"}]);
 	JotForm.init(function(){
@@ -872,6 +879,8 @@ div.form-header-group.header-large {
       setTimeout(function() {
           $('input_3').hint('ex: myname@example.com');
        }, 20);
+JotForm.initCaptcha('input_63');
+$('input_63_reload').observe('click',function(){ JotForm.reloadCaptcha('input_63') })
 	JotForm.newDefaultTheme = true;
 	JotForm.extendsNewTheme = false;
 	JotForm.newPaymentUIForNewCreatedForms = false;
@@ -880,13 +889,13 @@ div.form-header-group.header-large {
     /*INIT-END*/
 	});
 
-   JotForm.prepareCalculationsOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Online Store","type":"control_head"},{"description":"","name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"description":"","name":"email3","qid":"3","subLabel":"","text":"E-mail","type":"control_email"},{"description":"","name":"shippingAddress4","qid":"4","text":"Shipping Address","type":"control_address"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"description":"","name":"ourProducts","qid":"24","text":"Our Products","type":"control_payment"},{"description":"","name":"contactNumber25","qid":"25","text":"Contact Number","type":"control_phone"},{"name":"input26","qid":"26","text":"","type":"control_head"},null,{"name":"pStyletextalign","qid":"28","text":"If you want a customised coffee, Contact us at our main page.","type":"control_text"},{"name":"typeA","qid":"29","text":"Terms and Conditions","type":"control_widget"},null,null,null,null,null,null,{"name":"order","qid":"36","text":"Order","type":"control_button"},null,null,{"name":"enterYour","qid":"39","text":"Enter Your Details","type":"control_collapse"},null,null,null,null,null,null,null,null,null,{"name":"checkOnce","qid":"49","text":"Check once before Placing the order","type":"control_widget"},null,null,null,null,null,null,null,null,{"description":"","labelText":"","name":"security_certificate_seal_comodo","qid":"58","text":"security_certificate_seal_comodo","type":"control_image"}]);
+   JotForm.prepareCalculationsOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Online Store","type":"control_head"},{"description":"","name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"description":"","name":"email3","qid":"3","subLabel":"","text":"E-mail","type":"control_email"},{"description":"","name":"shippingAddress4","qid":"4","text":"Shipping Address","type":"control_address"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"description":"","name":"ourProducts","qid":"24","text":"Our Products","type":"control_payment"},{"description":"","name":"contactNumber25","qid":"25","text":"Contact Number","type":"control_phone"},{"name":"input26","qid":"26","text":"","type":"control_head"},null,{"name":"pStyletextalign","qid":"28","text":"If you want a customised coffee, Contact us at our main page.","type":"control_text"},{"name":"typeA","qid":"29","text":"Terms and Conditions","type":"control_widget"},null,null,null,null,null,null,{"name":"order","qid":"36","text":"Order","type":"control_button"},null,null,{"name":"enterYour","qid":"39","text":"Enter Your Details","type":"control_collapse"},null,null,null,null,null,null,null,null,null,{"name":"checkOnce","qid":"49","text":"Check once before Placing the order","type":"control_widget"},null,null,null,null,null,null,null,null,{"description":"","labelText":"","name":"security_certificate_seal_comodo","qid":"58","text":"security_certificate_seal_comodo","type":"control_image"},null,null,null,null,{"description":"","name":"typeThe63","qid":"63","text":"Type the word below","type":"control_captcha"}]);
    setTimeout(function() {
-JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Online Store","type":"control_head"},{"description":"","name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"description":"","name":"email3","qid":"3","subLabel":"","text":"E-mail","type":"control_email"},{"description":"","name":"shippingAddress4","qid":"4","text":"Shipping Address","type":"control_address"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"description":"","name":"ourProducts","qid":"24","text":"Our Products","type":"control_payment"},{"description":"","name":"contactNumber25","qid":"25","text":"Contact Number","type":"control_phone"},{"name":"input26","qid":"26","text":"","type":"control_head"},null,{"name":"pStyletextalign","qid":"28","text":"If you want a customised coffee, Contact us at our main page.","type":"control_text"},{"name":"typeA","qid":"29","text":"Terms and Conditions","type":"control_widget"},null,null,null,null,null,null,{"name":"order","qid":"36","text":"Order","type":"control_button"},null,null,{"name":"enterYour","qid":"39","text":"Enter Your Details","type":"control_collapse"},null,null,null,null,null,null,null,null,null,{"name":"checkOnce","qid":"49","text":"Check once before Placing the order","type":"control_widget"},null,null,null,null,null,null,null,null,{"description":"","labelText":"","name":"security_certificate_seal_comodo","qid":"58","text":"security_certificate_seal_comodo","type":"control_image"}]);}, 20); 
+JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Online Store","type":"control_head"},{"description":"","name":"fullName2","qid":"2","text":"Full Name","type":"control_fullname"},{"description":"","name":"email3","qid":"3","subLabel":"","text":"E-mail","type":"control_email"},{"description":"","name":"shippingAddress4","qid":"4","text":"Shipping Address","type":"control_address"},null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,{"description":"","name":"ourProducts","qid":"24","text":"Our Products","type":"control_payment"},{"description":"","name":"contactNumber25","qid":"25","text":"Contact Number","type":"control_phone"},{"name":"input26","qid":"26","text":"","type":"control_head"},null,{"name":"pStyletextalign","qid":"28","text":"If you want a customised coffee, Contact us at our main page.","type":"control_text"},{"name":"typeA","qid":"29","text":"Terms and Conditions","type":"control_widget"},null,null,null,null,null,null,{"name":"order","qid":"36","text":"Order","type":"control_button"},null,null,{"name":"enterYour","qid":"39","text":"Enter Your Details","type":"control_collapse"},null,null,null,null,null,null,null,null,null,{"name":"checkOnce","qid":"49","text":"Check once before Placing the order","type":"control_widget"},null,null,null,null,null,null,null,null,{"description":"","labelText":"","name":"security_certificate_seal_comodo","qid":"58","text":"security_certificate_seal_comodo","type":"control_image"},null,null,null,null,{"description":"","name":"typeThe63","qid":"63","text":"Type the word below","type":"control_captcha"}]);}, 20); 
 </script>
 </head>
 <body>
-<form class="jotform-form" action="https://submit.jotform.com/submit/211344857327458/" method="post" name="form_211344857327458" id="211344857327458" accept-charset="utf-8" autocomplete="on" data-netlify-recaptcha="true" data-netlify="true">
+<form class="jotform-form" action="https://submit.jotform.com/submit/211344857327458/" method="post" name="form_211344857327458" id="211344857327458" accept-charset="utf-8" autocomplete="on">
   <input type="hidden" name="formID" value="211344857327458" />
   <input type="hidden" id="JWTContainer" value="" />
   <input type="hidden" id="cardinalOrderNumber" value="" />
@@ -1284,7 +1293,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
             </div>
           </div>
         </li>
-        <li class="form-line jf-required" data-type="control_address" id="id_4">
+        <li class="form-line jf-required" data-type="control_address" id="id_4" data-compound-hint=",,,,,">
           <label class="form-label form-label-top" id="label_4" for="input_4_addr_line1">
             Shipping Address
             <span class="form-required">
@@ -1297,7 +1306,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
                 <span class="form-address-line form-address-street-line jsTest-address-lineField">
                   <span class="form-sub-label-container" style="vertical-align:top">
                     <input type="text" id="input_4_addr_line1" name="q4_shippingAddress4[addr_line1]" class="form-textbox validate[required] form-address-line" value="" data-component="address_line_1" aria-labelledby="label_4 sublabel_4_addr_line1" required="" />
-                    <label class="form-sub-label" for="input_4_addr_line1" id="sublabel_4_addr_line1" style="min-height:13px" aria-hidden="false"> Street Address </label>
+                    <label class="form-sub-label" for="input_4_addr_line1" id="sublabel_4_addr_line1" style="min-height:13px" aria-hidden="false"> Door Number </label>
                   </span>
                 </span>
               </div>
@@ -1305,7 +1314,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
                 <span class="form-address-line form-address-street-line jsTest-address-lineField">
                   <span class="form-sub-label-container" style="vertical-align:top">
                     <input type="text" id="input_4_addr_line2" name="q4_shippingAddress4[addr_line2]" class="form-textbox form-address-line" value="" data-component="address_line_2" aria-labelledby="label_4 sublabel_4_addr_line2" />
-                    <label class="form-sub-label" for="input_4_addr_line2" id="sublabel_4_addr_line2" style="min-height:13px" aria-hidden="false"> Street Address Line 2 </label>
+                    <label class="form-sub-label" for="input_4_addr_line2" id="sublabel_4_addr_line2" style="min-height:13px" aria-hidden="false"> Street Address </label>
                   </span>
                 </span>
               </div>
@@ -1589,7 +1598,58 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
             </div>
           </div>
         </li>
-        <li class="form-line jf-required" data-type="control_widget" id="id_29">
+        <li class="form-line form-line-column form-col-1 jf-required" data-type="control_captcha" id="id_63">
+          <label class="form-label form-label-top" id="label_63" for="input_63">
+            Type the word below
+            <span class="form-required">
+              *
+            </span>
+          </label>
+          <div id="cid_63" class="form-input-wide jf-required" data-layout="full">
+            <div class="form-captcha" data-component="captcha">
+              <label for="input_63"> <img alt="Captcha - Reload if not displayed" id="input_63_captcha" class="form-captcha-image" style="background:url(https://cdn.jotfor.ms/images/loader-big.gif) no-repeat center" src="https://cdn.jotfor.ms/images/blank.gif" width="150" height="41" /> </label>
+              <div style="white-space:nowrap">
+                <input type="text" id="input_63" class="form-textbox validate[required]" name="captcha" style="width:130px" required="" />
+                <img src="https://cdn.jotfor.ms/images/reload.png" alt="Reload" style="cursor:pointer;vertical-align:middle" id="input_63_reload" />
+                <input type="hidden" name="captcha_id" id="input_63_captcha_id" value="0" />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="form-line form-line-column form-col-2 always-hidden" data-type="control_widget" id="id_49">
+          <label class="form-label form-label-top" id="label_49" for="input_49"> Check once before Placing the order </label>
+          <div id="cid_49" class="form-input-wide always-hidden" data-layout="full">
+            <div data-widget-name="Get Visitor Location" style="width:100%;text-align:Right;overflow-x:auto" data-component="widget-field">
+              <iframe data-client-id="528f2d25cb95879e40000007" title="Get Visitor Location" frameBorder="0" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen" data-type="iframe" class="custom-field-frame" id="customFieldFrame_49" src="" style="max-width:400px;border:none;width:100%;height:1px" data-width="400" data-height="1">
+              </iframe>
+              <div class="widget-inputs-wrapper">
+                <input type="hidden" id="input_49" class="form-hidden form-widget  " name="q49_checkOnce" value="" />
+                <input type="hidden" id="widget_settings_49" class="form-hidden form-widget-settings" value="%5B%7B%22name%22%3A%22inputBox%22%2C%22value%22%3A%22Hide%22%7D%2C%7B%22name%22%3A%22outputDetails%22%2C%22value%22%3A%22IP%2CCountry%2CCountry%20Code%2CRegion%2CRegion%20Code%2CCity%2CCounty%2CZip%20Code%2CTimezone%2CLatitude%2CLongitude%22%7D%5D" data-version="2" />
+              </div>
+              <script type="text/javascript">
+              setTimeout(function()
+{
+  var _cFieldFrame = document.getElementById("customFieldFrame_49");
+  if (_cFieldFrame)
+  {
+    _cFieldFrame.onload = function()
+    {
+      if (typeof widgetFrameLoaded !== 'undefined')
+      {
+        widgetFrameLoaded(49, {
+          "formID": 211344857327458
+        })
+      }
+    };
+    _cFieldFrame.src = "//widgets.jotform.io/getVisitorLocation/?qid=49&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
+    _cFieldFrame.addClassName("custom-field-frame-rendered");
+  }
+}, 0);
+              </script>
+            </div>
+          </div>
+        </li>
+        <li class="form-line form-line-column form-col-3 jf-required" data-type="control_widget" id="id_29">
           <div id="cid_29" class="form-input-wide termsAndConditionsV2 jf-required" data-layout="full">
             <div data-widget-name="Terms &amp;amp; Conditions" style="width:100%;text-align:Left;overflow-x:auto" data-component="widget-field">
               <iframe data-client-id="52948fb29322cd302b00000c" title="Terms &amp;amp; Conditions" frameBorder="0" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen" data-type="iframe" class="custom-field-frame" id="customFieldFrame_29" src="" style="max-width:580px;border:none;width:100%;height:50px" data-width="580" data-height="50">
@@ -1614,40 +1674,6 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
       }
     };
     _cFieldFrame.src = "//app-widgets.jotform.io/termsConditions/?qid=29&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '&ndt=1' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
-    _cFieldFrame.addClassName("custom-field-frame-rendered");
-  }
-}, 0);
-              </script>
-            </div>
-          </div>
-          <div data-netlify-recaptcha="true" aria-required="true"><input required></div>
-        </li>
-        <li class="form-line form-line-column form-col-1" data-type="control_widget" id="id_49">
-          <label class="form-label form-label-top" id="label_49" for="input_49"> Check once before Placing the order </label>
-          <div id="cid_49" class="form-input-wide" data-layout="full">
-            <div data-widget-name="Get Visitor Location" style="width:100%;text-align:Right;overflow-x:auto" data-component="widget-field">
-              <iframe data-client-id="528f2d25cb95879e40000007" title="Get Visitor Location" frameBorder="0" scrolling="no" allowtransparency="true" allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen" data-type="iframe" class="custom-field-frame" id="customFieldFrame_49" src="" style="max-width:400px;border:none;width:100%;height:1px" data-width="400" data-height="1">
-              </iframe>
-              <div class="widget-inputs-wrapper">
-                <input type="hidden" id="input_49" class="form-hidden form-widget  " name="q49_checkOnce" value="" />
-                <input type="hidden" id="widget_settings_49" class="form-hidden form-widget-settings" value="%5B%7B%22name%22%3A%22inputBox%22%2C%22value%22%3A%22Hide%22%7D%2C%7B%22name%22%3A%22outputDetails%22%2C%22value%22%3A%22IP%2CCountry%2CCountry%20Code%2CRegion%2CRegion%20Code%2CCity%2CCounty%2CZip%20Code%2CTimezone%2CLatitude%2CLongitude%22%7D%5D" data-version="2" />
-              </div>
-              <script type="text/javascript">
-              setTimeout(function()
-{
-  var _cFieldFrame = document.getElementById("customFieldFrame_49");
-  if (_cFieldFrame)
-  {
-    _cFieldFrame.onload = function()
-    {
-      if (typeof widgetFrameLoaded !== 'undefined')
-      {
-        widgetFrameLoaded(49, {
-          "formID": 211344857327458
-        })
-      }
-    };
-    _cFieldFrame.src = "//widgets.jotform.io/getVisitorLocation/?qid=49&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
     _cFieldFrame.addClassName("custom-field-frame-rendered");
   }
 }, 0);
