@@ -1599,75 +1599,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
                 <input type="hidden" id="widget_settings_29" class="form-hidden form-widget-settings" value="%5B%7B%22name%22%3A%22termsText%22%2C%22value%22%3A%22I%20agree%20to%20%7Bterms%20%26%20conditions%7D.%22%7D%2C%7B%22name%22%3A%22termsLink%22%2C%22value%22%3A%22www.manis.cf%2FTerms%20and%20Conditions.html%22%7D%2C%7B%22name%22%3A%22theme%22%2C%22value%22%3A%22default%22%7D%2C%7B%22name%22%3A%22acceptedText%22%2C%22value%22%3A%22Accepted%22%7D%5D" data-version="2" />
               </div>
               <div data-netlify-recaptcha="true"></div>
-              <script type="text/javascript">
-                var recaptchaLoadedinput_62 = function()
-    {
-      window.grecaptcha.render($("recaptcha_input_62"), {
-        sitekey: '6LdU3CgUAAAAAB0nnFM3M3T0sy707slYYU51RroJ',
-      });
-      var grecaptchaBadge = document.querySelector('.grecaptcha-badge');
-      if (grecaptchaBadge)
-      {
-        grecaptchaBadge.style.boxShadow = 'gray 0px 0px 2px';
-      }
-    };
-
-  /**
-   * Called when the reCaptcha verifies the user is human
-   * For invisible reCaptcha;
-   *   Submit event is stopped after validations and recaptcha is executed.
-   *   If a challenge is not displayed, this will be called right after grecaptcha.execute()
-   *   If a challenge is displayed, this will be called when the challenge is solved successfully
-   *   Submit is triggered to actually submit the form since it is stopped before.
-   */
-  var recaptchaCallbackinput_62 = function()
-    {
-      var isInvisibleReCaptcha = false;
-      var hiddenInput = $("input_62");
-      hiddenInput.setValue(1);
-      if (!isInvisibleReCaptcha)
-      {
-        if (hiddenInput.validateInput)
-        {
-          hiddenInput.validateInput();
-        }
-      }
-      else
-      {
-        triggerSubmit(hiddenInput.form)
-      }
-
-      function triggerSubmit(formElement)
-      {
-        var button = formElement.ownerDocument.createElement('input');
-        button.style.display = 'none';
-        button.type = 'submit';
-        formElement.appendChild(button).click();
-        formElement.removeChild(button);
-      }
-    }
-
-              <script type="text/javascript">
-              setTimeout(function()
-{
-  var _cFieldFrame = document.getElementById("customFieldFrame_29");
-  if (_cFieldFrame)
-  {
-    _cFieldFrame.onload = function()
-    {
-      if (typeof widgetFrameLoaded !== 'undefined')
-      {
-        widgetFrameLoaded(29, {
-          "formID": 211344857327458
-        })
-      }
-    };
-    _cFieldFrame.src = "//app-widgets.jotform.io/termsConditions/?qid=29&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '&ndt=1' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
-    _cFieldFrame.addClassName("custom-field-frame-rendered");
-  }
-}, 0);
-              </script>
-            </div>
+  
           </div>
         </li>
         <li class="form-line form-line-column form-col-1" data-type="control_widget" id="id_49">
