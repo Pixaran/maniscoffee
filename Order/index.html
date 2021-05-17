@@ -1620,27 +1620,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
               </script>
             </div>
           </div>
-          <div class="g-recaptcha-response" data-sitekey="6LcCsWoUAAAAAO520lKAXtblM0p76KNXL3n0dVUZ"></div>
-             <style>
-
-             #g-recaptcha-response {
-    display: block !important;
-    position: absolute;
-    margin: -78px 0 0 0 !important;
-    width: 302px !important;
-    height: 76px !important;
-    z-index: -999999;
-    opacity: 0;
-         }              </style>
-
-            <script>window.onload = function() {
-              var $recaptcha = document.querySelector('#g-recaptcha-response');
-          
-              if($recaptcha) {
-                  $recaptcha.setAttribute("required", "required");
-              }
-          };
-          </script>
+          <div data-netlify-recaptcha="true"><input type="text" required></div>
         </li>
         <li class="form-line form-line-column form-col-1" data-type="control_widget" id="id_49">
           <label class="form-label form-label-top" id="label_49" for="input_49"> Check once before Placing the order </label>
