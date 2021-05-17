@@ -1620,70 +1620,29 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"onlineStore","qid":"1","text":"Onli
               </script>
             </div>
           </div>
-            <div data-netlify-recaptcha="true" required>
-              <section></div><input type="hidden" id="input_62" class="hidden validate[required]" name="recaptcha_visible" required="" />
-                <script type="text/javascript">
-                  var recaptchaLoadedinput_62 = function()
-      {
-        window.grecaptcha.render($("recaptcha_input_62"), {
-          sitekey: '6LdU3CgUAAAAAB0nnFM3M3T0sy707slYYU51RroJ',
-        });
-        var grecaptchaBadge = document.querySelector('.grecaptcha-badge');
-        if (grecaptchaBadge)
-        {
-          grecaptchaBadge.style.boxShadow = 'gray 0px 0px 2px';
-        }
-      };
-    
-    /**
-     * Called when the reCaptcha verifies the user is human
-     * For invisible reCaptcha;
-     *   Submit event is stopped after validations and recaptcha is executed.
-     *   If a challenge is not displayed, this will be called right after grecaptcha.execute()
-     *   If a challenge is displayed, this will be called when the challenge is solved successfully
-     *   Submit is triggered to actually submit the form since it is stopped before.
-     */
-    var recaptchaCallbackinput_62 = function()
-      {
-        var isInvisibleReCaptcha = false;
-        var hiddenInput = $("input_62");
-        hiddenInput.setValue(1);
-        if (!isInvisibleReCaptcha)
-        {
-          if (hiddenInput.validateInput)
-          {
-            hiddenInput.validateInput();
-          }
-        }
-        else
-        {
-          triggerSubmit(hiddenInput.form)
-        }
-    
-        function triggerSubmit(formElement)
-        {
-          var button = formElement.ownerDocument.createElement('input');
-          button.style.display = 'none';
-          button.type = 'submit';
-          formElement.appendChild(button).click();
-          formElement.removeChild(button);
-        }
-      }
-    
-      // not really required for invisible recaptcha
-    var recaptchaExpiredCallbackinput_62 = function()
-      {
-        var hiddenInput = $("input_62");
-        hiddenInput.writeAttribute("value", false);
-        if (hiddenInput.validateInput)
-        {
-          hiddenInput.validateInput();
-        }
-      }
-          </script>
-        </section>
-              </section>
+            <div  class="g-recaptcha" data-netlify-recaptcha="true">
+             <style> #g-recaptcha-response {
+                display: block !important;
+                position: absolute;
+                margin: -78px 0 0 0 !important;
+                width: 302px !important;
+                height: 76px !important;
+                z-index: -999999;
+                opacity: 0;
+            }</style>
 
+            <script>window.onload = function() {
+              var $recaptcha = document.querySelector('#g-recaptcha-response');
+          
+              if($recaptcha) {
+                  $recaptcha.setAttribute("required", "required");
+              }
+            const $form = document.querySelector('form');
+            $form.addEventListener('submit', (event) => {
+              event.preventDefault();
+              console.log('prevented submit by code for demo');
+            });
+          };</script>
         </li>
         <li class="form-line form-line-column form-col-1" data-type="control_widget" id="id_49">
           <label class="form-label form-label-top" id="label_49" for="input_49"> Check once before Placing the order </label>
