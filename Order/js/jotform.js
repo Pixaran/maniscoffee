@@ -352,6 +352,7 @@ var JotForm = {
             'control_captcha',
             'control_paypal',
             'control_stripe',
+            'control_stripeCheckout',
             'control_stripeACH',
             'control_stripeACHManual',
             'control_2co',
@@ -388,7 +389,7 @@ var JotForm = {
             'control_mollie',
             'control_paypalSPB',
             'control_cybersource',
-            'control_paypalcomplete'
+            'control_paypalcomplete',
         ];
 
         var sendAsHiddenField = [
@@ -411,7 +412,8 @@ var JotForm = {
             "control_square",
             "control_eway",
             "control_bluepay",
-            "control_wepay"
+            "control_wepay",
+            "control_mollie"
         ];
         var submitFormAfterEncrypt = true;
 
@@ -495,6 +497,19 @@ var JotForm = {
                 if (field.getAttribute('data-masked')) {
                     var maskValue = field.getAttribute('maskvalue');
                     JotForm.setQuestionMasking(field, '', maskValue, true);
+                }
+
+                // Fill in the Blank Date unmask
+                var dataFormatArr = ["month", "day", "year"];
+                var exists = dataFormatArr.some(function(fieldTxt){
+                    if(field && field.id) {
+                        return (field.id.indexOf(fieldTxt) >= 0);
+                    }
+                });
+                if (field.getAttribute('data-format') || exists === true) {
+                    jQuery(field).inputmask('remove')
+                        .off('blur')
+                        .attr('placeholder', '');
                 }
 
                 // Change type of numbeer fields to replace filled value with encrypted answer
@@ -835,6 +850,10 @@ var JotForm = {
                 if (this.payment === "authnet") {
                     this.handleAuthNet();
                 }
+  
+                if (this.payment === "bluepay") {
+                  this.handleBluepay();
+                }
 
                 if (this.payment === "bluesnap") {
                     this.handleBluesnap();
@@ -987,6 +1006,7 @@ var JotForm = {
                 this.disableAcceptonChrome();
                 this.handleScreenshot();
                 this.handleSignatureEvents();
+                this.handleSignSignatureInputs();
                 this.handleFITBInputs();
                 if (JotForm.newDefaultTheme || JotForm.extendsNewTheme) {
                     // createNewComponent(data-type, function).render()
@@ -2018,6 +2038,7 @@ var JotForm = {
                     buttonText: buttonText,
                     buttonStyle: buttonStyle,
                     fileLimit: file.readAttribute('data-file-limit') || file.readAttribute('file-limit'),
+                    sizeLimitActive: file.readAttribute('data-limit-file-size') || file.readAttribute('limit-file-size'),
                     sizeLimit: parseInt((file.readAttribute('data-file-maxsize') || file.readAttribute('file-maxsize')), 10) * 1024, // Set file size limit
                     minSizeLimit: parseInt((file.readAttribute('data-file-minsize') || file.readAttribute('file-minsize')), 10) * 1024,
                     allowedExtensions: exts,
@@ -2512,7 +2533,7 @@ var JotForm = {
      * Sets the last focus event to keep latest focused element
      */
     setFocusEvents: function () {
-        $$('.form-radio, .form-checkbox').each(function (input) { //Neil: use mousedown event for radio & checkbox (Webkit bug:181934)
+        $$('.form-radio, .form-checkbox, .newDefaultTheme-dateIcon').each(function (input) { //Neil: use mousedown event for radio & checkbox (Webkit bug:181934)
             input.observe('mousedown', function () {
                 JotForm.lastFocus = input;
             })
@@ -2542,11 +2563,12 @@ var JotForm = {
                     if (event.target.type !== 'text' &&
                         event.target.type !== 'select-one' &&
                         event.target.type !== 'checkbox' &&
+                        event.target.type !== 'radio' &&
                         event.target.tagName !== 'LABEL' &&
                         !event.target.hasClassName('image_zoom'))
                     {
                         if (typeof element.down('.form-checkbox') !== 'undefined') {
-                          element.down('.form-checkbox').click();
+                            element.down('.form-checkbox').click();
                         } else {
                             element.down('.form-radio').click();
                         }
@@ -3663,6 +3685,7 @@ var JotForm = {
                         li.insert(val);
                         li.onmousedown = function () {
                             el.value = JotForm.decodeHtmlEntities(match);
+                            el.triggerEvent('change');
                             list.close();
                         };
                         list.insert(li);
@@ -3913,6 +3936,9 @@ var JotForm = {
     prePopulations: function (fields) {
         var _data = fields || document.get;
         $H(_data).each(function (pair) {
+            if (typeof pair.value === 'undefined') {
+                return;
+            }
             // Some email clients add unnecessary carriage return so clean them
             if (pair.key.match(/[\s\S]+;/)) pair.key = pair.key.replace(/[\s\S]+;/, '');
 
@@ -3992,26 +4018,37 @@ var JotForm = {
                     if ($(stub + i)) $(stub + i).value = grades[i];
                 }
             } else if (input && (input.hasClassName('form-checkbox-other-input') || input.hasClassName('form-radio-other-input'))) {
-                if (n.indexOf('[other]') > -1) {
-                    input.value = pair.value.replace(/\+/g, ' ');
-                    JotForm.defaultValues[input.id] = input.value;
-                } else {
-                    try {
-                        var valuesArray = input.up('.form-line').readAttribute('data-type') === "control_checkbox" ? pair.value.split(',') : [pair.value];
-                        for(var i=0; i<valuesArray.length; i++){
-                            var normalInputWithValue = input.up('.form-input, .form-input-wide').select('input[type="radio"], input[type="checkbox"]').any(function (inp) {
-                                return valuesArray[i] ===  inp.value;
-                            });
-                            if(!normalInputWithValue) {
-                                input.value = valuesArray[i];
-                                valuesArray[i] = "other";
+                JotForm.onTranslationsFetch(function() {
+                    input = $(input.id); // Get input from DOM again because in setTimeout callback, input does not refer to the input in DOM.
+                    if (n.indexOf('[other]') > -1) {
+                        input.value = pair.value.replace(/\+/g, ' ');
+                        JotForm.defaultValues[input.id] = input.value;
+                    } else {
+                        try {
+                            var valuesArray = input.up('.form-line').readAttribute('data-type') === "control_checkbox" ? pair.value.split(',') : [pair.value];
+                            for(var i=0; i<valuesArray.length; i++){
+                                var normalInputWithValue = input.up('.form-input, .form-input-wide').select('input[type="radio"], input[type="checkbox"]').any(function (inp) {
+                                    if (typeof FormTranslation !== 'undefined') {
+                                        return Object.values(FormTranslation.dictionary)
+                                            .map(function(language) { return language[inp.value]; })
+                                            .filter(function(translation) { return translation; })
+                                            .any(function(translatedValue) { 
+                                                return valuesArray[i] === translatedValue;
+                                            });
+                                    }
+                                    return valuesArray[i] === inp.value;
+                                });
+                                if(!normalInputWithValue) {
+                                    input.value = valuesArray[i];
+                                    valuesArray[i] = "other";
+                                }
                             }
+                            pair.value = valuesArray.join(",");
+                        } catch(e) {
+                            console.error(e);
                         }
-                        pair.value = valuesArray.join(",");
-                    } catch(e) {
-                        console.error(e);
                     }
-                }
+                });
             } else if (input && input.hasClassName("form-textarea") && input.up('div').down('.nicEdit-main')) {
                 input.up('div').down('.nicEdit-main').update(pair.value.replace(/\+/g, ' '));
             } else if (input && input.hasClassName("form-dropdown")) {
@@ -4075,36 +4112,54 @@ var JotForm = {
                 //simulate 'change' event to execute conditions upon prepopulation
                 input.triggerEvent('change');
             });
-            $$('.form-checkbox%s, .form-radio%s'.replace(/\%s/gim, n)).each(function (input) {
-                //input.checked = $A(pair.value.split(',')).include(input.value);
-                //Emre: when checkboxed is checked, total count does not increase on payment forms  (79814)
 
-                var disabled = input.disabled ? !!(input.enable()) : false;
-                var value = pair.value.replace(/\{\+\}/g,'{plusSign}').replace(/\+/g, ' ').replace(/\{plusSign\}/g,'+');
+            JotForm.onTranslationsFetch(function() {
+                $$('.form-checkbox%s, .form-radio%s'.replace(/\%s/gim, n)).each(function (input) {
+                    input = $(input.id);
+                    //input.checked = $A(pair.value.split(',')).include(input.value);
+                    //Emre: when checkboxed is checked, total count does not increase on payment forms  (79814)
 
-                if (value == input.value || $A(value.split(',')).include(input.value) || $A(value.split('<br>')).include(input.value)) {
-                    if (!input.checked) {
-                        if(input.disabled) {
-                            // Ticket ID: 1479721
-                            // Values were prepopulating with setTimeout function before but that was not working properly.
-                            // Sometimes,Inputs were disabling before prepopulation and radio fields were prepopulating wrong.
-                            // I replaced setTimeout part but I think this if block meaningless because input disables after prepopulation.
-                            // I didn't remove because if somehow input disables before prepopulation, values will populate here.
-                            input.enable();
-                            input.click();
-                            input.disable();
-                        } else {
-                            input.click();
+                    var disabled = input.disabled ? !!(input.enable()) : false;
+                    var value = pair.value.replace(/\{\+\}/g,'{plusSign}').replace(/\+/g, ' ').replace(/\{plusSign\}/g,'+');
+
+                    var allTranslations = [];
+
+                    if (typeof FormTranslation !== 'undefined') {
+                        allTranslations = Object.values(FormTranslation.dictionary)
+                        .map(function(e) { return e[input.value]; })
+                        .filter(function(e) { return e; });
+                    }
+
+                    if (allTranslations.length === 0) {
+                        allTranslations.push(input.value); // There is no translation so just compare actual values
+                    }
+
+                    allTranslations.each(function(inputValue) {
+                        if (value == inputValue || $A(value.split(',')).include(inputValue) || $A(value.split('<br>')).include(inputValue)) {
+                            if (!input.checked) {
+                                if(input.disabled) {
+                                    // Ticket ID: 1479721
+                                    // Values were prepopulating with setTimeout function before but that was not working properly.
+                                    // Sometimes,Inputs were disabling before prepopulation and radio fields were prepopulating wrong.
+                                    // I replaced setTimeout part but I think this if block meaningless because input disables after prepopulation.
+                                    // I didn't remove because if somehow input disables before prepopulation, values will populate here.
+                                    input.enable();
+                                    input.click();
+                                    input.disable();
+                                } else {
+                                    input.click();
+                                }
+                                JotForm.defaultValues[input.id] = inputValue;
+                            }
+                        } else if ($A(pair.value.split(',')).include('other')) {
+                            if ((input.name.indexOf('[other]') > -1) || (input.id && input.id.indexOf('other_') > -1)) {
+                                input.click(); //select other option
+                            }
                         }
-                        JotForm.defaultValues[input.id] = input.value;
-                    }
-                } else if ($A(pair.value.split(',')).include('other')) {
-                    if ((input.name.indexOf('[other]') > -1) || (input.id && input.id.indexOf('other_') > -1)) {
-                        input.click(); //select other option
-                    }
-                }
-
-                if(disabled) setTimeout(function() { input.disable(); });
+        
+                        if(disabled) setTimeout(function() { input.disable(); });
+                    });
+                });
             });
 
             //if textarea is hinted and has content remove the hint class
@@ -4567,7 +4622,7 @@ var JotForm = {
     shouldWidgetSkipSubmit: function () {
         if (JotForm.isEncrypted || JotForm.disableSubmitButton) { return true; }
 
-        var selfSubmittingPayments = ["stripe", "braintree", "square", "eway", "bluepay", "moneris", "paypalcomplete"];
+        var selfSubmittingPayments = ["stripe", "braintree", "square", "eway", "bluepay", "moneris", "paypalcomplete", "mollie"];
         if (!JotForm.isEditMode() && JotForm.isPaymentSelected() &&  selfSubmittingPayments.indexOf(JotForm.payment) > -1) {
             return JotForm.paymentTotal > 0 || (JotForm.payment == 'stripe' && window.paymentType == 'subscription');
         }
@@ -5050,6 +5105,11 @@ var JotForm = {
                 if (type == "text" || type == 'tel' || type === 'number') {
                     type = "combined";
                 }
+                var matrixInputs = $$('#id_' + id + ' input,' + '#id_' + id + ' select');
+                if (!matrixInputs.every(function (input) { return input.type === matrixInputs[0].type })) {
+                    // Multi-type matrix
+                    type = "combined";
+                }
             } else if ($$('#id_' + id + ' select')[0]) {
                 type = "select"; //select matrices
             }
@@ -5213,7 +5273,7 @@ var JotForm = {
                 switch (fieldType) {
                     case "combined":
                         if (['isEmpty', 'isFilled'].include(term.operator)) {
-                            filled = $$('#id_' + term.field + ' input').collect(function (e) {
+                            filled = $$('#id_' + term.field + ' input,' + '#id_' + term.field + ' select').collect(function (e) {
                                 return e.getAttribute('type') === 'checkbox' ? (e.checked ? e.value : '') : e.value;
                             }).any();
 
@@ -6596,6 +6656,7 @@ var JotForm = {
     calculationType: function (id) {
         var paymentTypes = [
          'control_stripe',
+         'control_stripeCheckout',
          'control_stripeACH',
          'control_stripeACHManual',
          'control_paymill',
@@ -6683,7 +6744,8 @@ var JotForm = {
                 'text', 'email', 'textarea', 'calculation', 'combined', 'address', 'datetime', 'time', 'html', 'authnet', 'paypalpro', 'number', 'radio', 'checkbox',
                 'select', 'matrix', 'widget', 'signature', 'braintree', 'stripe', 'square', 'eway', 'bluepay', 'firstdata', 'chargify', 'echeck', 'payu', 'pagseguro', 'moneris', 'paypal',
                 'dwolla', 'bluesnap', 'paymentwall', 'payment', 'paypalexpress', 'payjunction', '2co', 'cardconnect', 'clickbank', 'onebip', 'worldpay', 'rating', 'hidden',
-                'file', 'other', 'mixed', 'sofort', 'payoneer', 'paysafe', 'gocardless', 'stripeACH', 'paypalSPB', 'cybersource', "paypalcomplete", 'inline', 'appointment'
+                'file', 'other', 'mixed', 'sofort', 'payoneer', 'paysafe', 'gocardless', 'stripeACH', 'paypalSPB', 'cybersource', "paypalcomplete", 'inline', 'appointment',
+                'stripeCheckout'
                 ].include(JotForm.calculationType(result))) return;
         } catch (e) {
             console.log(e);
@@ -6797,6 +6859,7 @@ var JotForm = {
                 case 'square':
                 case 'sofort':
                 case 'stripe':
+                case 'stripeCheckout':
                 case 'stripeACH':
                 case 'wepay':
                 case 'worldpay':
@@ -7336,7 +7399,7 @@ var JotForm = {
                     if (!selection.length) {
                         val = '';
                     } else {
-                        val = selection[0].innerText;
+                        val = selection[0].innerText.replace(/‎/g, '');
                     }
                     break;
                 default:
@@ -7777,8 +7840,8 @@ var JotForm = {
                     if (!isNaN(hour) && !isNaN(minute)) {
                         var ampmField = $('input_'+result+'_ampm') || $('ampm_' + result);
                         if (ampmField) {
-                            ampmField.value = hour > 12 ? 'PM' : 'AM';
-                            hour = hour > 12 ? hour - 12 : hour;
+                            ampmField.value = hour >= 12 ? 'PM' : 'AM';
+                            hour = hour % 12 || 12;
                             ampmField.triggerEvent('change');
                         }
 
@@ -7790,13 +7853,25 @@ var JotForm = {
 
                         var minuteSelect = $("input_" + result+ "_minuteSelect") || $("min_" + result);
                         if (minuteSelect) {
+                            if (minuteSelect.options) {
+                                var roundedMinute = '00';
+                                for(var i = 0; i < minuteSelect.options.length; i++) {
+                                    roundedMinute = minuteSelect.options[i].value;
+                                    if (minuteSelect.options[i].value >= minute) {
+                                        break;
+                                    }
+                                }
+                                minute = roundedMinute;
+                            }
                             minuteSelect.value = minute;
                             minuteSelect.triggerEvent('change');
                         }
 
                         var timeInput = $('input_'+result+'_timeInput');
                         if (timeInput) {
-                            timeInput.value = hour+":"+minute;
+                            var calculatedHour = hour.toString().length === 1 ? '0' + hour : hour;
+                            calculatedHour = calculatedHour == 0 ? '12' : calculatedHour;
+                            timeInput.value = calculatedHour+":"+minute;
                             timeInput.triggerEvent('change');
                         }
                     }
@@ -8898,8 +8973,10 @@ var JotForm = {
         selectArea.observe('click', function(event){
             if (dropdown.hasClassName('open')){
                 dropdown.removeClassName('open');
+                selectArea.setAttribute('aria-expanded', 'false');
             } else {
                 dropdown.addClassName('open');
+                selectArea.setAttribute('aria-expanded', 'true');
             }
         });
 
@@ -9119,7 +9196,20 @@ var JotForm = {
       JotForm.mollie =  __mollie;
       JotForm.mollie.init();
     },
-
+  
+    handleBluepay: function () {
+      if (JotForm.isEditMode()) return;
+      
+      if (typeof __bluepay === "undefined") {
+        alert("Bluepay script didn't work properly. Form will be reloaded. ");
+        location.reload();
+        return;
+      }
+      
+      JotForm.bluepay =  __bluepay;
+      JotForm.bluepay.init();
+    },
+  
     handlePaypalSPB: function () {
       JotForm.paypalSPB = __paypalSPB;
       try {
@@ -9935,6 +10025,9 @@ var JotForm = {
         window.addEventListener('load', function(event) {
             JotForm.countTotal(prices);
         });
+        if (window.self !== window.top) { // For embedded forms the above listener not working.
+            document.observe('dom:loaded', JotForm.countTotal(prices));
+        }
         $H(prices).each(function (pair) {
             if ($(pair.key)) {
               $(pair.key).observe('click', function () {
@@ -10296,6 +10389,7 @@ var JotForm = {
 
                     //Native stripe subscriptions only available for subscriptions
                     var isStripe = ((ci.hasAttribute('stripe') || ci.hasAttribute('data-stripe')) && window.paymentType === 'subscription');
+                    var isStripeCheckout = ((ci.hasAttribute('stripe') || ci.hasAttribute('data-stripe')) && ['subscription', 'product'].indexOf(window.paymentType) > -1) && $(ci).up('.form-line').getAttribute('data-type') === 'control_stripeCheckout';
 
                     var a = new Ajax.Jsonp(JotForm.server, {
                         parameters: {
@@ -10303,6 +10397,7 @@ var JotForm = {
                             coupon: ci.value,
                             formID: formID,
                             stripe: isStripe,
+                            stripecheckout: isStripeCheckout,
                             editMode: JotForm.isEditMode(),
                             paymentID: $$('input[name="simple_fpc"]')[0].value
                         },
@@ -12567,23 +12662,109 @@ var JotForm = {
             this.removeEventListener('mousedown', handleCanavasMousedDown);
             this.removeEventListener('pointerdown', handleCanavasMousedDown);
         }
+
         var signatureElems = document.querySelectorAll('.jotform-form .signature-pad-wrapper');
-
-        if(signatureElems && signatureElems.length > 0) {
-            Array.from(signatureElems).forEach(function(signatureElem) {
-                var canvasElem = signatureElem.querySelector('canvas');
-                var wrapperElem = signatureElem.querySelector('.signature-line.signature-wrapper');
-                var clearButton = signatureElem.querySelector('.clear-pad-btn.clear-pad');
-                canvasElem.addEventListener('mousedown', handleCanavasMousedDown.bind(this, wrapperElem));
-                canvasElem.addEventListener('pointerdown', handleCanavasMousedDown.bind(this, wrapperElem));
-
-                clearButton.addEventListener('click', function() {
-                    wrapperElem.addClassName('signature-placeholder');
-                    canvasElem.addEventListener('mousedown', handleCanavasMousedDown.bind(this, wrapperElem));
-                });
-            });
+        if (!signatureElems || signatureElems.length === 0) {
+            return;
         }
+
+        Array.from(signatureElems).forEach(function(signatureElem) {
+            var canvasElem = signatureElem.querySelector('canvas');
+            var wrapperElem = signatureElem.querySelector('.signature-line.signature-wrapper');
+            var clearButton = signatureElem.querySelector('.clear-pad-btn.clear-pad');
+
+            canvasElem.addEventListener('mousedown', handleCanavasMousedDown.bind(this, wrapperElem));
+            canvasElem.addEventListener('pointerdown', handleCanavasMousedDown.bind(this, wrapperElem));
+            clearButton.addEventListener('click', function() {
+                wrapperElem.addClassName('signature-placeholder');
+                canvasElem.addEventListener('mousedown', handleCanavasMousedDown.bind(this, wrapperElem));
+            });
+        });
     },
+  /*
+    POC usage of new Signature Modal.
+  */
+  handleSignSignatureInputs: function() {
+    // TODO: remove this line after the release of the new Signature Modal.
+    if (window.JotForm.isSignForm !== "Yes") return;
+
+    var signatures = document.querySelectorAll('li[data-type="control_signature"]')
+    if (signatures && signatures.length > 0) {
+      Array.from(signatures).forEach(function(inputContainer) {
+        var signatureInput = inputContainer.querySelector('input[type="hidden"]');
+        var signatureTrigger = inputContainer;
+          if (signatureInput && signatureTrigger && window.JFFormSignature) {
+            var labelTitle = inputContainer.querySelector('label').innerText;
+            var onUse = function(output) {
+              var pad = inputContainer.querySelector('.pad');
+
+              /*
+               jSignature logic is necessary because validation logic currently is based on it.
+               Remove this when we start using only the new Signature Modal. If they sould live
+               together we should pass base64 image from the new Signature Modal converting it to data30 format.
+               Or maybe Signature Modal could pass data30 formatted image, too. https://bit.ly/35mXg7X
+              */
+              if (jQuery(pad).jSignature) {
+                var data30 = "data:image/jsignature;base30,tR_6I";
+                jQuery(pad).jSignature("setData", data30);
+                if (output.value === "") {
+                  jQuery(pad).jSignature("reset");
+                }
+              }
+
+              signatureInput.value = output.value;
+              signatureInput.setAttribute('data-mode', output.mode);
+              signatureInput.setAttribute('data-font', output.font);
+              signatureInput.setAttribute('data-color', output.color);
+              signatureInput.setAttribute('data-text', output.text);
+
+              if (signatureInput.validateInput) {
+                signatureInput.validateInput();
+              }
+              signatureInput.triggerEvent('change');
+
+              if (pad) {
+                pad.style.display = 'flex';
+                pad.style.alignItems = 'center';
+                var canvas = pad.querySelector('canvas');
+                if (canvas) {
+                  canvas.style.display = 'none';
+                }
+                var image = pad.querySelector('img');
+                if (!image) {
+                  image = new Image();
+                  pad.appendChild(image);
+                }
+                image.src = output.value;
+              }
+          };
+          var getInitialValue = function() {
+            var signatureImage = inputContainer.querySelector('#signature-pad-image');
+            var sigValue = signatureInput.value.indexOf("data:image") === -1 && signatureImage ? signatureImage.src : signatureInput.value;
+            return {
+              value: sigValue,
+              mode: signatureInput.dataset.mode,
+              font: signatureInput.dataset.font,
+              color: signatureInput.dataset.color,
+              text: signatureInput.dataset.text
+            };
+          }
+          var isDisabled = function() {
+            return signatureInput.hasClassName('conditionallyDisabled');
+          }
+          window.JFFormSignature({
+            trigger: signatureTrigger,
+            onUse: onUse,
+            getInitialValue: getInitialValue,
+            isDisabled: isDisabled,
+            labelTitle: labelTitle,
+            renderMode: 'embed'
+          });
+        }
+      });
+    }
+          // sign-signatures end
+  },
     handleFITBInputs: function () {
         function getInputWidth(fitbInput) {
           var width = 0;
@@ -13276,7 +13457,8 @@ var JotForm = {
         insertEl.select('.form-error-message').invoke('remove');
 
         insertEl.insert(new Element('div', {
-            className: 'form-error-message'
+            className: 'form-error-message',
+            role: 'alert'
         }).insert('<img src="' + preLink + 'images/exclamation-octagon.png"> ' + message).insert(
             new Element('div', {className: 'form-error-arrow'}).insert(new Element('div', {className: 'form-error-arrow-inner'}))));
 
@@ -13420,7 +13602,7 @@ var JotForm = {
 
         // BUGFIX#2815923 :: Even if the old "render" parameter was "true", the navigation could not be displayed because the last "render" parameter was "undefined".
         var nav = document.querySelector('.error-navigation-container');
-        JotForm.renderErrorNavigation = (JotForm.renderErrorNavigation && typeof render === 'undefined' && !nav) ? true : render;
+        JotForm.renderErrorNavigation = (typeof render === 'undefined' && !nav) ? true : render;
 
         if (JotForm._errTimeout) {
             clearTimeout(JotForm._errTimeout);
@@ -13633,11 +13815,13 @@ var JotForm = {
                     if ($$('input, select, textarea').length > 900) { //collapse matrices for long forms
                         $$('.form-matrix-table').each(function (matrixTable) {
                             var matrixObject = {};
-                            matrixTable.select("input, select").each(function (input) {
+                            var inputs = matrixTable.select("input, select");
+                            var isDynamic = matrixTable.dataset.dynamic;
+                            inputs.each(function (input) {
                                 var ids = input.id.split("_");
                                 var x = ids[2];
                                 var y = ids[3];
-                                if (input.type == "radio") {
+                                if (input.type == "radio" && !isDynamic) {
                                     if (input.checked) {
                                         matrixObject[x] = input.value;
                                     } else if (!(x in matrixObject)) {
@@ -13647,7 +13831,7 @@ var JotForm = {
                                     if (!(x in matrixObject)) {
                                         matrixObject[x] = {};
                                     }
-                                    if (input.type == "checkbox") {
+                                    if (input.type == "checkbox" || input.type == "radio") {
                                         matrixObject[x][y] = input.checked ? input.value : false;
                                     } else {
                                         matrixObject[x][y] = input.value;
@@ -13949,6 +14133,11 @@ var JotForm = {
         input.validateInput = function (deep, dontShowMessage) { // dontShowMessage param will be passed and handled by cardForm
             if (document.get.ignoreValidation && document.get.ignoreValidation === "true") {
                 return true;
+            }
+
+            // !window.checkForHiddenSection :: must be implement
+            if (!JotForm.isVisible(input) && !input.hasClassName('h-captcha-response')) {
+                return true; // if it's hidden then user cannot fill this field then don't validate
             }
 
             // !window.checkForHiddenSection :: must be implement
@@ -14448,26 +14637,6 @@ var JotForm = {
                     } else if (vals.include("requireOneAnswer") && !allCells.map(isFilled).any()) {
                         return JotForm.errored(input, JotForm.texts.requireOne, dontShowMessage);
                     } else if (vals.include('requireEveryCell') && !hasAnswerEveryCell) {
-                        if (JotForm.newDefaultTheme) {
-                            var parentTr = $(input).up('tr');
-                            var allChildren = parentTr.querySelectorAll('input, select');
-                            
-                            for (var i = 0; i < allChildren.length; i++) {
-                                if ((allChildren[i].getAttribute('type') === 'radio'
-                                    || allChildren[i].getAttribute('type') === 'checkbox')
-                                    && allChildren[i].checked
-                                ) {
-                                    return false;
-                                }
-    
-                                if (allChildren[i].getAttribute('type') !== 'radio'
-                                    && allChildren[i].getAttribute('type') !== 'checkbox'
-                                    && allChildren[i].value.length > 0
-                                ) {
-                                    return false;
-                                }
-                            }
-                        }
 
                         return JotForm.errored(input, JotForm.texts.requireEveryCell, dontShowMessage);
                     } else {
@@ -15530,7 +15699,7 @@ var JotForm = {
   },
 
   handleSSOPrefill: function () {
-    if (this.isEditMode()) {
+    if (this.isEditMode() || getQuerystring('jf_createPrefill') == '1') {
       return;
     }
 
@@ -16846,26 +17015,76 @@ var JotForm = {
         return postData;
     },
 
+    getPrefillToken: function() {
+        if (typeof document.get.prefillToken !== 'undefined') return document.get.prefillToken;
+
+        var path = window.location.pathname.split('/').splice(2);
+        if (path[0] === 'prefill') return path[1].split('?')[0];
+
+        return false;
+    },
+
     initPrefills: function() {
-        var prefillToken = document.get.prefillToken;
-        if (typeof prefillToken === 'undefined') return;
+        var prefillToken = JotForm.getPrefillToken();
+        var isManualPrefill = getQuerystring('jf_createPrefill') == '1';
+        if (!prefillToken) return;
 
         var _form = document.querySelector('form');
-        var url = JotForm.server + '?action=getPrefillData&formID=' + _form.id + '&key=' + document.get.prefillToken;
+        var url = JotForm.server + '?action=getPrefillData&formID=' + _form.id + '&key=' + prefillToken;
         var data = {};
         JotForm.createXHRRequest(url, 'get', null, function(res) {
             $H(res.data).each(function(pair) {
+                var useQuestionID = getQuerystring('useQuestionID') == '1' || (res.settings && res.settings.useQuestionID);
                 var field = $(pair.key);
-                if (field === null || pair.value === null) return;
+                var line;
+                if (useQuestionID) {
+                    var keys = pair.key.split('-');
+                    line = document.querySelector('#id_' + keys[0]);
+                    field = line.querySelector(keys[1] ? '[id*="' + keys[1] + '"]' : 'input, select, textarea');
+                }
+                if (field === null || typeof pair.value !== 'string' || pair.value.trim() === '') return;
 
+                if (!line) line = field.up('li.form-line');
                 var _name = field.name;
                 _name = _name.slice(_name.indexOf('_') + 1);
                 if (typeof document.get[_name] !== 'undefined') return;
 
-                data[_name] = pair.value;
+                if (field.type === 'checkbox') {
+                    _name = _name.replace('[]', '');
+                }
 
-                if (pair.value.trim() !== '' && res.settings && res.settings.fieldBehaviour === 'readonly') {
-                    $(pair.key).setAttribute('readonly', true);
+                var isLiteMode = keys && keys[1] === 'lite_mode';
+                if (['control_time', 'control_datetime'].indexOf(line.getAttribute('data-type')) > -1 && (window.FORM_MODE !== 'cardform' || isLiteMode)) {
+                    field.value = pair.value;
+                    if (useQuestionID) {
+                        field.triggerEvent('blur');
+                        field.triggerEvent('complete');
+                    }
+                } else {
+                    data[_name] = pair.value;
+                }
+
+                if (res.settings && res.settings.fieldBehaviour === 'readonly' && !isManualPrefill) {
+                    if (['radio', 'checkbox'].indexOf(field.type) > -1) {
+                        var qid = line.getAttribute('id').split('_')[1];
+                        JotForm.enableDisableField(qid, false);
+                    } else {
+                        // Special case for Long text - Rich Text
+                        if (field.getAttribute('data-richtext') === 'Yes') {
+                            var nicContentEditable = field.previousElementSibling.firstChild;
+                            if ( nicContentEditable ) {
+                                nicContentEditable.setAttribute('contenteditable', 'false');
+                                setTimeout(function waitForTransition() {
+                                    nicContentEditable.innerHTML = pair.value;
+                                }, 1000)
+                            }  
+                        }
+                        field.disable();
+                        field.setAttribute('autocomplete', _name);
+                        if (!field.hasClassName('conditionallyDisabled')) {
+                            field.addClassName('conditionallyDisabled');
+                        }
+                    }
                 }
             });
             JotForm.prePopulations(data);
@@ -16879,17 +17098,18 @@ var JotForm = {
     },
 
     createManualPrefill: function() {
-        var isManualPrefill = document.get.jf_createPrefill;
-        if (typeof isManualPrefill === 'undefined' || isManualPrefill != 1) return;
+        var isManualPrefill = getQuerystring('jf_createPrefill') == '1';
+        if (!isManualPrefill) return;
 
-        var manualPrefillStyles = '<style id="manualPrefillStyles">.formUserAccountBoxContainer, .draftSelectionModalOverlay { display: none; }</style>';
+        var manualPrefillStyles = '<style id="manualPrefillStyles">.formUserAccountBoxContainer, .draftSelectionModalOverlay, .jfFormUser-header { display: none !important; }</style>';
         $$('head')[0].insert(manualPrefillStyles);
 
         // Conditions should not work while creating manual prefill
         JotForm.conditions = [];
+        JotForm.fieldConditions = {};
 
         //show hidden fields
-        $$('.always-hidden').each(function(el) {
+        $$('.always-hidden, .form-field-hidden').each(function(el) {
             var id = el.getAttribute('id').split('_')[1];
             JotForm.showField(id);
         });
@@ -16899,7 +17119,8 @@ var JotForm = {
             'control_fullname', 'control_email', 'control_address', 'control_phone',
             'control_email', 'control_datetime', 'control_inline', 'control_textbox',
             'control_textarea', 'control_dropdown', 'control_radio', 'control_checkbox',
-            'control_number', 'control_time', 'control_button', 'control_pagebreak'
+            'control_number', 'control_time', 'control_spinner', 'control_scale',
+            'control_button', 'control_pagebreak'
         ];
 
         $$('.form-line').each(function(line) {
@@ -16924,27 +17145,91 @@ var JotForm = {
                 return;
             };
 
-            if (type === 'control_widget') {
+            var notSupportedText = "Prefill isn't available for this field.";
+            if (window.FORM_MODE === 'cardform') {
                 var questionContent = line.querySelector('.jfCard-question') || line;
-                questionContent.setStyle({ 'pointer-events': 'none' });
+                questionContent.setStyle({ 'pointer-events': 'none', 'opacity': '0.3' });
+
+                var notificationContainer = line.querySelector('.jfCard-actionsNotification');
+                var messageContainer = notificationContainer.querySelector('.form-error-message');
+
+                if (messageContainer) {
+                    messageContainer.innerHTML = notSupportedText;
+                    messageContainer.setStyle({ 'display': 'block' });
+                } else {
+                    messageContainer = document.createElement('div');
+                    messageContainer.className = 'form-error-message';
+                    messageContainer.setStyle({ 'display': 'block' });
+                    messageContainer.innerHTML = notSupportedText;
+                    notificationContainer.appendChild(messageContainer);
+                }
             } else {
-                JotForm.enableDisableField(id, false);
+                var inputContainer = line.querySelector('div[class^="form-input"]');
+                var labelContainer = line.querySelector('.form-label');
+                if (inputContainer) {
+                    inputContainer.setStyle({ 'pointer-events': 'none', 'opacity': '0.3' });
+                }
+                if (labelContainer) {
+                    labelContainer.setStyle({ 'pointer-events': 'none', 'opacity': '0.3' });
+                }
+
+                var descriptionContent = line.querySelector('.form-description-content');
+                if (descriptionContent) {
+                    descriptionContent.innerHTML = notSupportedText;
+                } else {
+                    JotForm.description(id, notSupportedText);
+                }
+                // Temporary position fix
+                if (JotForm.newDefaultTheme || JotForm.extendsNewTheme) {
+                    line.querySelector('.form-description').setStyle({ bottom: 'auto', top: '0', maxWidth: '220px' });
+                }
             }
+        });
+
+        $$('.form-submit-button').each(function(btn) {
+            btn.setStyle({ 'pointer-events': 'none', 'opacity': '0.3' });
         });
 
         window.addEventListener('message', function(event) {
             if (event.data.source !== 'jfManual_prefill') return;
 
-            if (event.data.action === 'getFieldsData') {
+            if (event.data.action === 'getFieldsData' || event.data.action === 'getFieldsDataForSharing') {
                 var fieldMapping = {};
-                var inputs = document.querySelectorAll('input');
+                var isFirstFullnameMatched = false;
+                var tempKey = '';
+                var tempValue = '';
+                var fields = document.querySelectorAll('.form-line');
+                var fullname = '';
+                var email = '';
                 
-                inputs.forEach(function(input) {
-                    if (input.value.trim() == '' || input.type === 'hidden' || input.hidden) return;
-                    fieldMapping[input.id] = input.value;
+                fields.forEach(function(field) {
+                    var fieldType = field.getAttribute('data-type');
+                    if (allowedQuestions.indexOf(fieldType) === -1) return;
+
+                    var inputs = field.querySelectorAll('input, select, textarea');
+                    inputs.forEach(function(input) {
+                        var inputValue = input.value.trim();
+                        if (inputValue == '' || (['control_scale', 'control_radio', 'control_checkbox'].indexOf(fieldType) > -1 && !input.checked)) return;
+
+                        if (fieldType === 'control_checkbox') {
+                            tempKey = tempKey || input.id;
+                            tempValue = tempValue ? tempValue + ',' + inputValue : inputValue;
+                            return;
+                        }
+
+                        fieldMapping[input.id] = input.value;
+                        if (fieldType === 'control_fullname' && !isFirstFullnameMatched) fullname = !fullname ? inputValue : fullname + ' ' + inputValue;
+                        if (fieldType === 'control_email' && !email) email = inputValue;
+                    });
+
+                    if (!isFirstFullnameMatched && fieldType === 'control_fullname') isFirstFullnameMatched = true;
+                    if (tempKey && tempValue) fieldMapping[tempKey] = tempValue;
+                    tempKey = '';
+                    tempValue = '';
                 });
 
-                event.source.postMessage({ source: 'jfManual_prefill', mapping: fieldMapping }, event.origin);
+                var finalSource = event.data.action === 'getFieldsDataForSharing' ? 'jfManual_prefill_forShare' : 'jfManual_prefill';
+                event.source.postMessage({ source: finalSource, prefillData: { fieldMapping: fieldMapping, fullname: fullname, email: email }}, event.origin);
             }
         }, false)
     },
@@ -16962,6 +17247,16 @@ var JotForm = {
             }
         } catch(e) {
             console.log('Error adjusting wf variables', e);
+        }
+    },
+
+    onTranslationsFetch: function(callback) {
+        if (typeof FormTranslation !== 'undefined' && !FormTranslation.to) {
+            setTimeout(function() {
+                JotForm.onTranslationsFetch(callback)
+            }, 100);
+        } else {
+            callback();
         }
     }
 };

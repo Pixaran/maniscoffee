@@ -376,6 +376,7 @@ Calendar.setup = function(params)
   var isLiteMode = triggerElement.className.indexOf('icon-liteMode') > -1;
   var isAllowTime = triggerElement.getAttribute('data-allow-time') === 'Yes';
   var questionType = triggerElement.getAttribute('data-qtype') || null;
+  var autoCalendar = triggerElement.className.indexOf('showAutoCalendar') > -1;
 
   var targetElem = triggerElement.parentElement;
   var isLiteModeCalendar = triggerElement.className.indexOf('icon-liteMode') > -1;
@@ -483,7 +484,7 @@ Calendar.setup = function(params)
 
     // open the calendar by clicking the date input (just for the liteMode = off)
     var isLiteMode = triggerElement.className.indexOf('seperatedMode') > -1;
-    if(isNewTheme && !isLiteMode){
+    if(isNewTheme && !isLiteMode && autoCalendar){
       triggerInputElement.onclick = triggerCalender;
     }
   

@@ -1074,6 +1074,13 @@ li.form-line-error[data-type="control_fileupload"] .form-validation-error {
     box-shadow:0px 2px 4px rgba(102, 102, 102, 0.5);
     border-radius:6px 6px;
     background:#FFCCCC;
+    display: flex;
+    align-items: center;
+}
+.form-error-message img {
+    margin: 0 8px 0 3px;
+    width: 20px;
+    height: 20px;
 }
 
 .form-error-arrow{
@@ -2824,15 +2831,6 @@ li[data-type="control_mixed"] .form-sub-label-container[data-colsize="1"] input,
     overflow: scroll;
     position: relative;
     padding-right: 0;
-  }
-
-  li[data-type="control_scale"]:before {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 40px;
   }
 
   li[data-type="control_scale"] .form-sub-label-container .form-scale-table { padding-right: 20px; }

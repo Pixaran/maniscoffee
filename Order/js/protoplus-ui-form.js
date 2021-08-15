@@ -552,6 +552,7 @@ Protoplus.ui = {
             }
             
             desc.each(function(e,c){
+              e.setAttribute('aria-checked', i - 1 === c);
               if((i-1) < c){
                 e.setStyle({ backgroundPosition:image.blank}).removeClassName("rated");
               }
