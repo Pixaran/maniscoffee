@@ -6606,6 +6606,7 @@ var JotForm = {
                         if (JotForm.newDefaultTheme) {
                             $$("#id_" + opField + " input[class*='form-textbox']").each(function (el) {
                                 setCalculationListener($(el), 'keyup', calc, index);
+                                setCalculationListener($(el), 'blur', calc, index);
                             });
                         }
                         break;
@@ -15006,6 +15007,29 @@ var JotForm = {
             }, 10);
         };
 
+        if (input.type === 'email') {
+            var emailCharLimit = Number(input.getAttribute('maxlength'));
+            if (emailCharLimit) {
+                input.observe('keydown', function(e) {
+                    var numOfCharacter = e.target.value.length;
+                    if (numOfCharacter === emailCharLimit && e.key != 'Backspace') {
+                        JotForm.errored(input, JotForm.texts.characterLimitError + " " + emailCharLimit);
+                    } else if (input.hasClassName('form-validation-error')) {
+                        JotForm.corrected(input);
+                    }
+                })
+
+                input.observe('paste', function(e) {
+                    var pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                    if(pastedText.length + e.target.value.length >= emailCharLimit) {
+                        JotForm.errored(input, JotForm.texts.characterLimitError + " " + emailCharLimit);
+                    } else if (input.hasClassName('form-validation-error')) {
+                        JotForm.corrected(input);
+                    }
+                })
+            }
+        }
+
         if (input.type == 'hidden' || input.type == 'file') {
             input.observe('change', validatorEvent);
         } else {
@@ -15181,21 +15205,23 @@ var JotForm = {
     bringOldFBSubmissionBack: function (id) {
 
         var formIDField = $$('input[name="formID"]')[0];
-
-        var a = new Ajax.Jsonp(JotForm.url + 'server.php', {
-            parameters: {
-                action: 'bringOldFBSubmissionBack',
-                formID: formIDField.value,
-                fbid: id
-            },
-            evalJSON: 'force',
-            onComplete: function (t) {
-                var res = t.responseJSON;
-                if (res.success) {
-                    JotForm.editMode(res, true, ['control_helper', 'control_fileupload']); // Don't reset fields
+        
+        if(formIDField && formIDField.value){
+            var a = new Ajax.Jsonp(JotForm.url + 'server.php', {
+                parameters: {
+                    action: 'bringOldFBSubmissionBack',
+                    formID: formIDField.value,
+                    fbid: id
+                },
+                evalJSON: 'force',
+                onComplete: function (t) {
+                    var res = t.responseJSON;
+                    if (res.success) {
+                        JotForm.editMode(res, true, ['control_helper', 'control_fileupload']); // Don't reset fields
+                    }
                 }
-            }
-        });
+            });
+        }    
     },
 
     setCustomHint: function (elem, value) {
