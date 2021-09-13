@@ -1,53 +1,42 @@
 /*
 Maniscoffee.com
 */
-
-
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700');
-
 body {
   background: #ffffff;
   font-family: 'Source Sans Pro', sans-serif;
   overflow-x: hidden;
 }
-
 html, body {
   width: 100%;
   height: 100%;
 }
-
 /*---------------------------------------
   TYPOGRAPHY
 -----------------------------------------*/
-
 h1,h2,h3,h4,h5,h6 {
   font-weight: 300;
 }
-
 h1 {
   font-size: 40px;
   font-weight: 200;
   line-height: 50px;
 }
-
 h2 {
   font-size: 28px;
   line-height: 40px;
   font-weight: 200;
 }
-
 h3 {
   font-size: 20px;
   font-weight: bold;
   line-height: 32px;
 }
-
 h4 {
   color: #505050;
   font-size: 18px;
   line-height: 28px;
 }
-
 p {
   color: #757575;
   font-size: 16px;
@@ -55,17 +44,13 @@ p {
   line-height: 29px;
   letter-spacing: 0.5px;
 }
-
-
 /*---------------------------------------
   BUTTONS
 -----------------------------------------*/
-
 .section-btn {
   margin: 32px 0 0 0;
   padding: 0;
 }
-
 .section-btn a,
 .section-btn button {
   line-height: 45px;
@@ -75,7 +60,6 @@ p {
   color: #ffffff;
   font-weight: normal;
 }
-
 .section-btn a span,
 .section-btn button span {
   position: relative;
@@ -96,7 +80,6 @@ p {
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-
 .csstransforms3d .section-btn a span::before,
 .csstransforms3d .section-btn button span::before {
   position: absolute;
@@ -119,25 +102,20 @@ p {
   -moz-transform-origin: 50% 0;
   transform-origin: 50% 0;
 }
-
 .section-btn a:hover span,
 .section-btn a:focus span,
-
 .section-btn button:hover span,
 .section-btn button:focus span {
   -webkit-transform: rotateX(90deg) translateY(-22px);
   -moz-transform: rotateX(90deg) translateY(-22px);
   transform: rotateX(90deg) translateY(-22px);
 }
-
 .csstransforms3d .section-btn a:hover span::before,
 .csstransforms3d .section-btn a:focus span::before,
-
 .csstransforms3d .section-btn button:hover span::before,
 .csstransforms3d .section-btn button:hover span::before {
   background: #000000;
 }
-
 .button1 {
   background-color: #DAA520;
   border: none;
@@ -153,77 +131,62 @@ p {
   text-decoration: none;
   cursor: pointer;
 }
-
 .button1:hover {opacity: 1;
  background-color: #e4b849;
 }
 /*---------------------------------------
   GENERAL
 -----------------------------------------*/
-
 html{
   -webkit-font-smoothing: antialiased;
 }
-
 a {
   color: #633300;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 a:hover, a:active, a:focus {
   color: #000000;
   outline: none;
 }
-
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
 ::-webkit-scrollbar{
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
   background: #252525;
 }
-
 .section-title {
   position: relative;
   padding-bottom: 22px;
 }
-
 .parallax-section {
   background-attachment: fixed !important;
   background-size: cover !important;
 }
-
 #about, #project,
 #team, #contact, footer {
   background: #ffffff;
 }
-
 #about,
 #team, #contact {
   padding-top: 100px;
   padding-bottom: 100px;
   text-align: center;
 }
-
-
 /*---------------------------------------
   PRE LOADER
 -----------------------------------------*/
-
 .preloader {
   position: fixed;
   top: 0;
@@ -237,13 +200,11 @@ a:hover, a:active, a:focus {
   align-items: center;
   background: none repeat scroll 0 0 #ffffff;
 }
-
 .spinner {
   border: 1px solid transparent;
   border-radius: 5px;
   position: relative;
 }
-
 .spinner:before {
   content: '';
   box-sizing: border-box;
@@ -259,35 +220,25 @@ a:hover, a:active, a:focus {
   border-top-color: #ffffff;
   animation: spinner .9s linear infinite;
 }
-
-
-
-
 @-webkit-keyframes spinner {
   to {transform: rotate(360deg);}
 }
-
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
-
-
 /*---------------------------------------
   MENU
 -----------------------------------------*/
-
 .custom-navbar {
   margin-bottom: 0;
   background-color: #633300;
   padding: 20px 0;
 }
-
 .custom-navbar .navbar-brand {
   color: #f9f9f9;
   font-weight: normal;
   font-size: 25px;
 }
-
 .custom-navbar .nav li a {
   font-size: 14px;
   font-weight: normal;
@@ -299,13 +250,11 @@ a:hover, a:active, a:focus {
   margin: 15px 20px;
   text-transform: uppercase;
 }
-
 .custom-navbar .navbar-nav > li > a:hover,
 .custom-navbar .navbar-nav > li > a:focus {
   background-color: transparent;
   color: #ffffff;
 }
-
 .custom-navbar .navbar-nav li a:after {
   content: "";
   position: absolute;
@@ -316,33 +265,27 @@ a:hover, a:active, a:focus {
   background: transparent;
   transition: width .3s ease, background-color .3s ease;
 }
-
 .custom-navbar .navbar-nav li a:hover:after,
 .custom-navbar .nav li.active > a:after {
   background: #ffffff;
   color: #ffffff;
   width: 100%;
 }
-
 .custom-navbar .nav li.active > a {
   background-color: transparent;
   color: #ffffff;
 }
-
 .custom-navbar .navbar-toggle {
   border: none;
   padding-top: 10px;
 }
-
 .custom-navbar .navbar-toggle {
   background-color: transparent;
 }
-
 .custom-navbar .navbar-toggle .icon-bar {
   background: #ffffff;
   border-color: transparent;
 }
-
 @media(min-width:768px) {
   .custom-navbar {
     background: 0 0;
@@ -352,12 +295,9 @@ a:hover, a:active, a:focus {
     padding: 15px 0;
   }
 }
-
-
 /*---------------------------------------
   HOME
 -----------------------------------------*/
-
 #home {
   display: -webkit-box;
   display: -webkit-flex;
@@ -371,17 +311,14 @@ a:hover, a:active, a:focus {
   position: relative;
   padding-top: 10em;
 }
-
 #home h1 {
   color: #ffffff;
   font-size: 6em;
   line-height: 1.2em;
 }
-
 #home p {
   color: rgba(250,250,250,0.7);
 }
-
 #home .overlay {
   position: absolute;
   top: 0;
@@ -392,7 +329,6 @@ a:hover, a:active, a:focus {
   height: 100%;
   background-color: rgba(0,0,0,0.75);
 }
-
 #home video {
   position: fixed;
   top: 50%;
@@ -406,29 +342,22 @@ a:hover, a:active, a:focus {
   background-size: cover;
   transition: 1s opacity;
 }
-
-
 /*---------------------------------------
   ABOUT
 -----------------------------------------*/
-
 #about {
-  padding-top: 200px;
+  padding-top: 140px;
   padding-bottom: 20px;
 }
-
 .about-info h3 {
   font-size: 14px;
   letter-spacing: 12px;
   text-transform: uppercase;
   margin: 0;
 }
-
-
 /*---------------------------------------
   PROJECT
 -----------------------------------------*/
-
 .project-item {
   overflow: hidden;
   position: relative;
@@ -439,14 +368,12 @@ a:hover, a:active, a:focus {
   vertical-align: middle;
   text-align: center;
 }
-
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
-
 .project-overlay {
   background: rgba(0,0,0,0.5);
   position: absolute;
@@ -460,11 +387,9 @@ a:hover, a:active, a:focus {
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
 }
-
 .project-info {
   padding: 12em 0;
 }
-
 .project-item img {
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
@@ -472,7 +397,6 @@ a:hover, a:active, a:focus {
 .project-item:hover img {
   transform: scale(1.1);
 }
-
 .project-overlay h1 {
   color: #ffffff;
   margin: 0;
@@ -483,31 +407,25 @@ a:hover, a:active, a:focus {
   letter-spacing: 0.2px;
   margin-top: 0;
 }
-
 .project-item:hover .project-overlay {
   opacity: 1;
 }
-
 /*---------------------------------------
   CONTACT
 -----------------------------------------*/
-
 #contact {
   background: url('../images/contact-bg.jpg') 50% 0 repeat-y fixed;
   background-size: cover;
   background-position: center center;
 }
-
 #contact-form {
   padding-top: 22px;
 }
-
 #contact .text-success,
 #contact .text-danger {
   display: none;
   padding: 0 0 5px 20px;
 }
-
 #contact .form-control {
   border: none;
   box-shadow: none;
@@ -517,66 +435,51 @@ a:hover, a:active, a:focus {
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
 }
-
 #contact .form-control:focus {
   border-color: #d9d9d9;
 }
-
 #contact input {
   height: 55px;
   line-height: 45px;
 }
-
 #contact .section-btn {
   margin: 5px 0 0 0;
 }
-
 #contact button#cf-submit {
   background: transparent;
   border: none;
   padding: 0;
   line-height: 50px;
 }
-
-
 /*---------------------------------------
   FOOTER
 -----------------------------------------*/
-
 footer {
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 70px;
 }
-
 footer h4 {
   padding-top: 12px;
 }
-
 footer a {
   color: #757575;
 }
-
 footer .copyright-text {
   padding-top: 42px;
 }
-
-
 /*---------------------------------------
   SOCIAL ICON
 -----------------------------------------*/
-
 .social-icon {
   position: relative;
   padding: 0;
   margin: 24px;
   text-align: center;
 }
-
 .social-icon li {
   display: inline-block;
   list-style: none;
 }
-
 .social-icon li a {
   border-radius: 100%;
   color: #292929;
@@ -589,42 +492,34 @@ footer .copyright-text {
   position: relative;
   margin: 4px 8px 0 8px;
 }
-
 .social-icon li a:hover {
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
-
 /*---------------------------------------
   MOBILE RESPONSIVE
 -----------------------------------------*/
-
 @media (max-width: 992px) {
   #home h1 {
     font-size: 4em;
     line-height: normal;
   }
 }
-
 @media (max-width: 980px) {
   h1 {
     font-size: 30px;
     line-height: inherit;
   }
-
   #home {
     padding-top: 0em;
   }
-
   #about {
     padding-top: 120px;
     padding-bottom: 100px;
   }
-
   .project-info {
     padding: 4em 0;
   }
-
   footer {
     text-align: center;
   }
@@ -632,13 +527,11 @@ footer .copyright-text {
     margin-top: 32px;
   }
 }
-
 @media (max-width: 770px) {
   #home h1 {
     font-size: 3.5em;
   }
 }
-
 @media (max-width: 767px) {
   .custom-navbar {
     padding: 10px 0;
@@ -651,31 +544,24 @@ footer .copyright-text {
   .custom-navbar .nav li:last-child a {
     margin-bottom: 5px;
   }
-
   .project-info {
     padding: 10em 0;
   }
-
   .footer-info {
     padding: 22px 0 22px 0;
   }
 }
-
-
 @media (max-width: 580px) {
   h1 {
     font-size: 26px;
   }
-
   #home {
     height: 100vh;
   }
-
   .about-info h3 {
     font-size: 12px;
     letter-spacing: 6px;
   }
-
   .project-info {
     padding: 5em 0;
   }
@@ -684,7 +570,6 @@ footer .copyright-text {
  * 	Core Owl Carousel CSS File
  *	v1.3.3
  */
-
 /* clearfix */
 .owl-carousel .owl-wrapper:after {
 	content: ".";
@@ -718,7 +603,6 @@ footer .copyright-text {
 	-o-transition: height 500ms ease-in-out;
 	transition: height 500ms ease-in-out;
 }
-	
 .owl-carousel .owl-item{
 	float: left;
 }
@@ -734,12 +618,10 @@ footer .copyright-text {
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 /* mouse grab icon */
 .grabbing { 
     cursor:url(grabbing.png) 8 8, move;
 }
-
 /* fix */
 .owl-carousel  .owl-wrapper,
 .owl-carousel  .owl-item{
@@ -750,19 +632,15 @@ footer .copyright-text {
   -moz-transform: translate3d(0,0,0);
   -ms-transform: translate3d(0,0,0);
 }
-
 /*
 * 	Owl Carousel Owl Demo Theme 
 *	v1.3.3
 */
-
 .owl-theme .owl-controls{
 	margin-top: 16px;
 	text-align: center;
 }
-
 /* Styling Next and Prev buttons */
-
 .owl-theme .owl-controls .owl-buttons div{
 	color: #FFF;
 	display: inline-block;
@@ -785,9 +663,7 @@ footer .copyright-text {
 	opacity: 1;
 	text-decoration: none;
 }
-
 /* Styling Pagination*/
-
 .owl-theme .owl-controls .owl-page{
 	display: inline-block;
 	zoom: 1;
@@ -805,7 +681,6 @@ footer .copyright-text {
 	border-radius: 20px;
 	background: #888888;
 }
-
 .owl-theme .owl-controls .owl-page.active span,
 .owl-theme .owl-controls.clickable .owl-page:hover span{
 	filter: Alpha(Opacity=100);/*IE7 fix*/
@@ -813,9 +688,7 @@ footer .copyright-text {
 	background: #999;
 	border-color: transparent;
 }
-
 /* If PaginationNumbers is true */
-
 .owl-theme .owl-controls .owl-page span.owl-numbers{
 	height: auto;
 	width: auto;
@@ -826,7 +699,6 @@ footer .copyright-text {
 	-moz-border-radius: 30px;
 	border-radius: 30px;
 }
-
 /* preloading images */
 .owl-item.loading{
 	min-height: 150px;
