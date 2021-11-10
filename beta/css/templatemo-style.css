@@ -348,7 +348,7 @@ http://www.templatemo.com/tm-515-eatery
     margin: 0;
   }
 
-  @media (min-width: 760px) {
+{
     .slider .col-md-8 {
       padding-left: 0;
     }
