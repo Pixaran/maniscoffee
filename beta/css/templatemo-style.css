@@ -354,7 +354,29 @@ http://www.templatemo.com/tm-515-eatery
     }
   }
 
- 
+  .slider .owl-dots {
+    position: absolute;
+    top: 50%;
+    right: 2em;
+    justify-content: center;
+  }
+
+  .owl-theme .owl-dots .owl-dot {
+    display: block;
+  }
+
+  .owl-theme .owl-dots .owl-dot span {
+    width: 12px;
+    height: 12px;
+    margin: 7px 10px;
+    border: 2px solid #d9d9d9;
+    background: transparent;
+    display: block;
+    -webkit-backface-visibility: visible;
+    transition: opacity 200ms ease;
+    border-radius: 30px;
+  }
+
   .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
     background-color: #ffffff;
     border-color: transparent;
@@ -369,7 +391,7 @@ http://www.templatemo.com/tm-515-eatery
     height: 100%;
     color: #fff;
     cursor: e-resize;
-    padding: 4em 0 0 2em;
+ 
   }
 
   .slider .item {
