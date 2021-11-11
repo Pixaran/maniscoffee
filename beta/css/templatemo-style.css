@@ -348,12 +348,6 @@ http://www.templatemo.com/tm-515-eatery
     margin: 0;
   }
 
-  @media (min-width: 768px) {
-    .slider .col-md-8 {
-      padding-left: 0px;
-    }
-  }
-
   .slider .caption {
     display: flex;
     justify-content: center;
@@ -362,7 +356,6 @@ http://www.templatemo.com/tm-515-eatery
     background-color: rgba(20,20,20,0.2);
     height: 100%;
     color: #fff;
-    cursor: e-resize;
     padding: 4em 0 0 2em;
   }
 
