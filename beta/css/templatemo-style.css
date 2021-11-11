@@ -214,16 +214,6 @@ http://www.templatemo.com/tm-515-eatery
 		transform: scale(1.0);
 	}
 }
-.fadeIn {
-	-webkit-animation: fadeIn 0.6s;
-	animation: fadeIn 0.6s;
-}
-.animated {
-	-webkit-animation-duration: 1s;
-	animation-duration: 1s;
-	-webkit-animation-fill-mode: both;
-	animation-fill-mode: both;
-}
 
   /*---------------------------------------
       MENU              
