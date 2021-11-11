@@ -361,7 +361,7 @@ http://www.templatemo.com/tm-515-eatery
 
   .slider .item {
     height: 650px;
-	width: auto;
+	width: 100%;
   }
 
   .slider .item-first {
