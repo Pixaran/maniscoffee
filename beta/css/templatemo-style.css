@@ -434,8 +434,53 @@ http://www.templatemo.com/tm-515-eatery
     border-color: transparent;
     color: #ffffff;
   }
+.header {
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('../images/slider-image1.jpg') center center no-repeat;
+	background-size: cover;
+}
 
+.header .header-content {
+	padding-top: 22rem;
+	padding-bottom: 20rem;
+	text-align: center;
+}
 
+.header .text-container {
+	margin-bottom: 3rem;
+}
+
+.header h1 {
+	margin-bottom: 0.5rem;
+	color: #fff;
+}
+
+.header .p-large {
+	margin-bottom: 2rem;
+	color: #dfe5ec;
+}
+
+.header .btn-solid-lg {
+	margin-right: 0.5rem;
+	margin-bottom: 1.25rem;
+	padding: left;
+}
+.btn-solid-lg {
+	display: inline-block;
+	padding: 1.375rem 2.125rem 1.375rem 2.125rem;
+	border: 0.125rem solid #14bf98;
+	border-radius: 0.25rem;
+	background-color: #14bf98;
+	color: #fff;
+	font: 700px 0.75rem/0 "Montserrat", sans-serif;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.btn-solid-lg:hover {
+	background-color: transparent;
+	color: #14bf98;
+	text-decoration: none;
+}
 
   /*---------------------------------------
       ABOUT              
