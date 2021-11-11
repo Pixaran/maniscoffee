@@ -354,34 +354,6 @@ http://www.templatemo.com/tm-515-eatery
     }
   }
 
-  .slider .owl-dots {
-    position: absolute;
-    top: 50%;
-    right: 2em;
-    justify-content: center;
-  }
-
-  .owl-theme .owl-dots .owl-dot {
-    display: block;
-  }
-
-  .owl-theme .owl-dots .owl-dot span {
-    width: 12px;
-    height: 12px;
-    margin: 5px 7px;
-    border: 2px solid #d9d9d9;
-    background: transparent;
-    display: block;
-    -webkit-backface-visibility: visible;
-    transition: opacity 200ms ease;
-    border-radius: 30px;
-  }
-
-  .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-    background-color: #ffffff;
-    border-color: transparent;
-  }
-
   .slider .caption {
     display: flex;
     justify-content: center;
@@ -395,44 +367,12 @@ http://www.templatemo.com/tm-515-eatery
   }
 
   .slider .item {
-    background-position: inherit;
-    background-repeat: no-repeat;
-    background-attachment: local;
-    background-size: cover;
     height: 650px;
 	width: auto;
   }
 
   .slider .item-first {
     background-image: url(../images/slider-image1.jpg);
-  }
-
-  .slider .item-second {
-    background-image: url(../images/slider-image2.jpg);
-  }
-
-  .slider .item-third {
-    background-image: url(../images/slider-image3.jpg);
-  }
-
-  .slider .item-second .section-btn {
-    background: #292929;
-  }
-
-  .slider .item-second .section-btn:hover {
-    background: #ffffff;
-  }
-
-  .slider .item-third .section-btn {
-    background: transparent;
-    border: 1px solid #ffffff;
-  }
-
-  .slider .item-third .section-btn:hover,
-  .slider .item-third .section-btn:focus {
-    background: #ce3232;
-    border-color: transparent;
-    color: #ffffff;
   }
 
 
