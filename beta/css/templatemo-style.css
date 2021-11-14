@@ -115,7 +115,7 @@ http://www.templatemo.com/tm-515-eatery
 
   section {
     position: relative;
-    padding: 100px 0;
+    padding: 60px 0;
   }
 
   #team, 
@@ -884,7 +884,7 @@ http://www.templatemo.com/tm-515-eatery
 
   @media only screen and (max-width: 992px) {
     section {
-      padding: 60px 0;
+      padding: 40px 0;
     }
 
     .custom-navbar .section-btn {
