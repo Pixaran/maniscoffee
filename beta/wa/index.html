@@ -291,7 +291,9 @@ html{scroll-behavior: smooth;}
 }
 .noshow {display: none;}
 </style>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body style="background-color:#f6f6f6;">
 <div id="footsum" class="card" style="min-width:100%; z-index:15; padding:10px 30px; position:fixed; bottom:0px;display:none;">
@@ -302,7 +304,7 @@ html{scroll-behavior: smooth;}
 <div class="media-left"><img src="./index_files/coffee-beans_1485226.jpg" class="image is-64x64"></div>
 <div class="media-content">
 
-<small class="is-uppercase has-text-grey-light">Order on WhatsApp from</small><br><h1 class="title has-text-black">Manis Coffee</h1><h2 class="subtitle has-text-grey-light">70, Alagappa rd, Purasaiwalkam, Chennai-84</h2><span class="is-success tag">Open</span>
+<small class="is-uppercase has-text-grey-light">Order on WhatsApp from</small><br><h1 class="title has-text-black">Manis Coffee</h1><h2 class="subtitle has-text-grey-light">70, Alagappa rd, Purasaiwalkam, Chennai-84</h2><span class="is-success tag">We are 100% secure...<i class="fa fa-shield-alt"></i></span>
 </div></div></div></section>
 <section class="section" style="padding-top:20px;">
 <div class="container">
@@ -320,7 +322,8 @@ html{scroll-behavior: smooth;}
 </div>
 
 <div id="items">
-	<h3 style="margin-top:20px;" class="title is-5" id="Our-Specials">Our Specials</h3>
+	<h3 style="margin-top:20px;" class="title is-5" id="Our-Specials">Our Specials<span class="is-pulled-right" style="padding-right:15px;padding-top:4px;">
+							<span class="is-size-7 has-text-grey-light"></span> ₹/KG  </span></h3>
 	<li class="box is-marginless woitemimage" loading="lazy" style="background-image: url(Https://arabicacoffeeco.com/wp-content/themes/trizzy/images/header-default.jpg); padding-right:10px !important; margin-top:5px !important;  " data-item="Arabica" blend="" data-price="700">
 		<a onclick="javascript:updateC(&#39;Arabica Blend&#39;, 1, 700);" style="padding-top:0px;" class="mitem is-success is-pulled-right">
 			<svg style="color: var(--wotheme);" class="svg-inline--fa fa-plus-square fa-w-14 fa-2x" aria-hidden="true" data-prefix="far" data-icon="plus-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
@@ -351,7 +354,8 @@ html{scroll-behavior: smooth;}
 					<small>Made specially for the traditional filtercoffee lover</small>
 				</div>
 			</li>
-			<h3 style="margin-top:20px;" class="title is-5" id="Pure-Coffee">Pure Coffee</h3>
+			<h3 style="margin-top:20px;" class="title is-5" id="Pure-Coffee">Pure Coffee<span class="is-pulled-right" style="padding-right:15px;padding-top:4px;">
+							<span class="is-size-7 has-text-grey-light"></span> ₹/KG  </span></h3>
 			<li class="box is-marginless woitemimage" loading="lazy" style="background-image: url(Https://i2.wp.com/blog.suvie.com/wp-content/uploads/2020/02/Peaberry-beans.jpg); padding-right:10px !important; margin-top:5px !important;  " data-item="Peaberry" data-price="500">
 				<a onclick="javascript:updateC(&#39;Peaberry&#39;, 1, 500);" style="padding-top:0px;" class="mitem is-success is-pulled-right">
 					<svg style="color: var(--wotheme);" class="svg-inline--fa fa-plus-square fa-w-14 fa-2x" aria-hidden="true" data-prefix="far" data-icon="plus-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
@@ -382,7 +386,8 @@ html{scroll-behavior: smooth;}
 							<small>Best pure coffee blend in 1:1 ratio</small>
 						</div>
 					</li>
-					<h3 style="margin-top:20px;" class="title is-5" id="Chicory-Blend">Chicory Blend</h3>
+					<h3 style="margin-top:20px;" class="title is-5" id="Chicory-Blend">Chicory Blend<span class="is-pulled-right" style="padding-right:15px;padding-top:4px;">
+							<span class="is-size-7 has-text-grey-light"></span> ₹/KG  </span></h3>
 					<li class="box is-marginless woitemimage" loading="lazy" style="background-image: url(Https://4.bp.blogspot.com/-0I6rzwnIZHI/WMjXGiuxujI/AAAAAAAAQ8Q/ONY3OvbuWhkwcnyfHNwCpFx4GQ26n8y0ACLcB/s1600/South%2BIndian%2BCoffee.tif); padding-right:10px !important; margin-top:5px !important;  " data-item="Coffee" 80:20="" data-price="440">
 						<a onclick="javascript:updateC(&#39;Coffee 80:20&#39;, 1, 440);" style="padding-top:0px;" class="mitem is-success is-pulled-right">
 							<svg style="color: var(--wotheme);" class="svg-inline--fa fa-plus-square fa-w-14 fa-2x" aria-hidden="true" data-prefix="far" data-icon="plus-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
@@ -461,7 +466,8 @@ html{scroll-behavior: smooth;}
     <div class="tile is-parent is-vertical" style="padding:0rem;" id="wocart"><p class="has-text-centered">Your cart is empty</p></div> <!-- end of cart div -->
 
 <div><hr><textarea id="wonote" class="textarea" placeholder="Note" onchange="upLink();"></textarea></div>
-<div><hr><a id="wohref" target="_blank" onclick="return checkIt();" class="button is-medium is-fullwidth is-success" href="https://api.whatsapp.com/send?phone=919840350062&amp;text=New%20order%20%F0%9F%9B%B5%20(Manis+Coffee)%0A(%23%20165C1)%0A%0A%0A*Payable:%20INR%200*%0A%0A*Customer%20details*%0ASaro%0A1234567890%0Atjejhs%0Aagvz%0A****%0A%0A-----------------------------%0A(Message%20for%20Customer)%0A%0AClick%20to%20pay%20using%20UPI%0Ahttps://whatsorder.com/p/upiin.php?pn%3DManis%2520Coffee%26pa%3Dsaravanansha@fbl%26tn%3DWhatsOrder%26am%3D0%26cu%3DINR%0APlease%20share%20screenshot%20after%20payment.">Click to WhatsApp</a>
+<p class= "is-size-7 has-text-grey-light" style="padding:10px; color: #757575;">NOTE: - We only take orders within Chennai<br>- Do not edit the information on chat</br></p>
+<div><hr><a id="wohref" target="_blank" onclick="return checkIt();" class="button is-medium is-fullwidth is-success" style="padding-right:10px;" href="https://api.whatsapp.com/send?phone=919840350062&amp;text=New%20order%20%F0%9F%9B%B5%20(Manis+Coffee)%0A(%23%20165C1)%0A%0A%0A*Payable:%20INR%200*%0A%0A*Customer%20details*%0ASaro%0A1234567890%0Atjejhs%0Aagvz%0A****%0A%0A-----------------------------%0A(Message%20for%20Customer)%0A%0AClick%20to%20pay%20using%20UPI%0Ahttps://whatsorder.com/p/upiin.php?pn%3DManis%2520Coffee%26pa%3Dsaravanansha@fbl%26tn%3DWhatsOrder%26am%3D0%26cu%3DINR%0APlease%20share%20screenshot%20after%20payment.">Click to WhatsApp<i class= "fab fa-whatsapp"  style="padding-left:5px;">    </i></a>
 </div>
 
 </div>
@@ -845,10 +851,9 @@ document.getElementById("wohref").setAttribute('href', wlink);
 
 			<div class="footer-right">
 
-				<a href="#"><i class="fa fa-facebook"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-linkedin"></i></a>
-				<a href="#"><i class="fa fa-upi"></i></a>
+				<a href="#"><i class="fab fa-facebook"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="#"><i class="fab fa-google"></i></a>
 
 			</div>
 
@@ -857,20 +862,16 @@ document.getElementById("wohref").setAttribute('href', wlink);
 				<p class="footer-links">
 					<a class="link-1" href="#">Home</a>
 
-					<a href="#">Blog</a>
+				<a href="https://www.manis.coffee/#about">About</a>
 
-					<a href="#">Pricing</a>
+					<a href="https://www.manis.coffee/T&C.pdf">T&C</a>
 
-					<a href="#">About</a>
-
-					<a href="#">Faq</a>
-
-					<a href="#">Contact</a>
+					<a href="https://www.manis.coffee/#contact">Contact</a>
 				</p>
 
 				<p>Manis Coffee &copy; 2022</p>
 			</div>
-      <center  class= "img"><img src = "https://zeevector.com/wp-content/uploads/Bhim-Upi-Logo-PNG.png" alt="My Happy SVG"   width="120" 
+      <center  class= "img"><img src = "https://zeevector.com/wp-content/uploads/Bhim-Upi-Logo-PNG.png" alt="Upi SVG"   width="120" 
      height="15"></center>
 
 		</footer>
@@ -967,5 +968,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
   .img {
     padding: 20px;
 }
-}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></style>
-</body></html>
+}
+</body>
+</html>
