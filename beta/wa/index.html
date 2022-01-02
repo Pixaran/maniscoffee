@@ -292,8 +292,6 @@ html{scroll-behavior: smooth;}
 .noshow {display: none;}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
 </head>
 <body style="background-color:#f6f6f6;">
 <div id="footsum" class="card" style="min-width:100%; z-index:15; padding:10px 30px; position:fixed; bottom:0px;display:none;">
@@ -793,7 +791,7 @@ var jstand = true;
 if(!jstand){
     cartM = 'Trial version\nItem ABC x 2\nItem XYZ x 3';
 }
-var wlink = "https://api.whatsapp.com/send?phone=919840350062&text=New order "+(document.getElementById('wopic').checked ? '🏬' : '🛵')+" (Manis+Coffee)%0A(%23%20165C1)%0A%0A" + urlencode(cartM) + "%0A*Payable: INR " + amtPayable + "*%0A";
+var wlink = "https://api.whatsappapi.whatsapp.com/send?phone=919840350062&text=New order "+(document.getElementById('wopic').checked ? '🏬' : '🛵')+" (Manis+Coffee)%0A(%23%20Each 1kg)%0A%0A" + urlencode(cartM) + "%0A*Payable: INR " + amtPayable + "*%0A";
 wlink += "%0A*Customer details*%0A";
 wlink += toTitle(waddr).replace(/\x26/,"%26").replace(/\x23/,"%23");
 wlink += "%0A**"+wonote.replace(/\x26/,"%26").replace(/\x23/,"%23")+"**";
