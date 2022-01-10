@@ -4,7 +4,7 @@
 
     // PRE LOADER
     $(window).load(function(){
-      $('.spinner-wrapper').fadeOut(1000); // set duration in brackets    
+      $('.spinner-wrapper').fadeOut(700); // set duration in brackets    
     });
 
 
