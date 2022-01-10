@@ -152,6 +152,19 @@ http://www.templatemo.com/tm-515-eatery
     transition: 0.5s 0.2s;
   }
 
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: .8rem 3rem;
+  background: #bac34e;
+  color: #fff;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #222;
+}
 
 
   /*---------------------------------------
@@ -1007,5 +1020,5 @@ http://www.templatemo.com/tm-515-eatery
     .menu-thumb .menu-info {
       top: 60%;
     }
-  }
-
+ 
+ }
