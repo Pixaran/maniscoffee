@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <title>Manis Coffee</title>
-<link rel="icon" href="images/th.jpeg" alt="Simple logo">
-<link rel="apple-touch-icon" href="images/th.jpeg">
+<link rel="icon" href="images/th.png" alt="Simple logo">
+<link rel="apple-touch-icon" href="images/th.png">
 <!--
 Mani's Coffee
 http://Manis.coffee/
@@ -15,9 +15,11 @@ http://Manis.coffee/
 <meta name="author" content="Maniscoffee webcom">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/bootstrap.min.css" id="bootstrap-css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/style.css">
+	 <link rel="stylesheet" href="css/animate.css">
+	 
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/templatemo-style.css">
@@ -47,28 +49,10 @@ http://Manis.coffee/
     width: 55px; 
     height: 55px; 
 }
-@media screen and (max-width: 480px){
-    .lgscreenphone{
-        display: none;  
-    }
-    .mbscreenphone{
-        display: block; 
-    }
-}
-@media screen and (min-width: 481px){
-    .mbscreenphone{
-        display: none; 
-    }
-    .lgscreenphone{
-        display: block;
-    }
-}
 </style>
-</head>
-<body>
+
     <a class="lgscreenphone phonelink" href="tel:+919840350062"><img class="phoneicon" src="https://freeiconshop.com/wp-content/uploads/edd/phone-flat.png" alt="Call now"></a>
     <a class="mbscreenphone phonelink" href="tel:+919840350062"><img class="phoneicon" src="https://freeiconshop.com/wp-content/uploads/edd/phone-flat.png" alt="Call now"></a>
-</body>
 
 
      <!-- MENU -->
@@ -124,7 +108,6 @@ http://Manis.coffee/
         </div> <!-- end of header-content -->
     </header> <!-- end of header -->
     <!-- end of header -->
-
      <!-- ABOUT -->
      <section id="about" data-stellar-background-ratio="0.5">
           <div class="container">
@@ -140,7 +123,7 @@ http://Manis.coffee/
                               <div class="wow fadeInUp" data-wow-delay="0.4s">
                                   We are serving a delightful rich flavour and aroma Coffee powder from high quality coffee beans to thousands of satisfied costumers since 50 and above years in
 						 <a href="https://bit.ly/3CjDxET">Chennai, India.</a>Our main mission is to stop over consumption of instant coffee which leads to cancer among the coffee lovers. More information at bottom. Thank you.</p>
-                              </div>
+                              </div class="wow fadeInUp">
 							  #weareagainstinstantcoffee
                          </div>
                     </div>
@@ -154,7 +137,15 @@ http://Manis.coffee/
                </div>
           </div>
      </section>
-
+<div class="wow fadeInUp" style=" 
+            text-align:center;
+            font-size: 20px; 
+            padding: 10px; 
+            border: 3px solid #ffd484;
+            border-radius: 13px;			
+            margin: 27px;">
+ <b>Every hour our one new customers breaks their own taste records with us</b>
+</div>
      <!-- MENU-->
      <section id="menu" data-stellar-background-ratio="0.5">
           <div class="container">
@@ -163,6 +154,7 @@ http://Manis.coffee/
                          <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                               <h2>Our Menus</h2>
                               <h4>Coffee Time &amp; Dining</h4>
+							  
                          </div>
                     </div>
                 </div>
@@ -173,7 +165,7 @@ http://Manis.coffee/
         <div class="content">
             <span>Pure Coffee</span>
             <h3>At low cost</h3>
-            <a href="#" class="btn">shop now</a>
+            <a href="order/#Pure-Coffee" class="btn">shop now</a>
         </div>
     </div>
 
@@ -182,7 +174,7 @@ http://Manis.coffee/
         <div class="content">
             <span>South India Famous</span>
             <h3>Degree Coffee</h3>
-            <a href="#" class="btn">shop now</a>
+            <a href="order/#Our-Specials" class="btn">shop now</a>
         </div>
     </div>
 
@@ -191,7 +183,7 @@ http://Manis.coffee/
         <div class="content">
             <span>Chicory Blend</span>
             <h3>And more...</h3>
-            <a href="#" class="btn">shop now</a>
+            <a href="order/#Chicory-Blend" class="btn">shop now</a>
         </div>
     </div>
 	
@@ -200,7 +192,7 @@ http://Manis.coffee/
         <div class="content">
             <span>International sales</span>
             <h3>Bigger&Better</h3>
-            <a href="#" class="btn">Coming soon</a>
+            <a href="commingsoon.html" class="btn">Coming soon</a>
         </div>
     </div>
 	</section>
@@ -233,15 +225,15 @@ http://Manis.coffee/
                               <h6 class="text-danger">E-mail must be valid and message must be longer than 1 character.</h6>
 
                               <div class="col-md-6 col-sm-6">
-                                   <input type="text" class="form-control" id="cf-name" name="name" placeholder="Full name">
+                                   <input type="text" class="form-control" id="cf-name" name="name" placeholder="Full name" required>
                               </div>
 
                               <div class="col-md-6 col-sm-6">
-                                   <input type="email" class="form-control" id="cf-email" name="email" placeholder="Email address">
+                                   <input type="email" class="form-control" id="cf-email" name="email" placeholder="Email address" required>
                               </div>
 
                               <div class="col-md-12 col-sm-12">
-                                   <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject">
+                                   <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject" required>
 
                                    <textarea class="form-control" rows="6" id="cf-message" name="message" placeholder="Tell about your project"></textarea>
 
@@ -256,7 +248,15 @@ http://Manis.coffee/
           </div>
      </section>          
     <div style="padding:150px;position:relative;"><iframe allow="fullscreen" allowfullscreen="" frameborder="0" src="https://www.youtube.com/embed/6huuFBLDVS8?controls=0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
-     <!-- FOOTER -->
+   <p class="aligncenter">
+    <img src="images/image.jpg" alt="centered image" />
+</p>
+<style>
+.aligncenter {
+    text-align: center;
+}
+</style>
+   <!-- FOOTER -->
      <footer id="footer" data-stellar-background-ratio="0.5">
           <div class="container">
                <div class="row">
@@ -306,10 +306,10 @@ http://Manis.coffee/
 
                     <div class="col-md-2 col-sm-4">
                          <ul class="wow fadeInUp social-icon" data-wow-delay="0.4s">
-                              <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                              <li><a href="#" class="fa fa-twitter"></a></li>
+                              <li><a href="#" class="fa fa-telegram" attr="facebook icon"></a></li>
+                              <li><a href="/comingsoon.html" class="fa fa-twitter"></a></li>
                               <li><a href="https://www.instagram.com/maniscoffeeindia/" class="fa fa-instagram"></a></li>
-                              <li><a href="https://bit.ly/3CjDxET#" class="fa fa-google"></a></li>
+                              <li><a href="https://bit.ly/3CjDxET" class="fa fa-google"></a></li>
                          </ul>
 
                          <div class="wow fadeInUp copyright-text" data-wow-delay="0.8s"> 
@@ -323,10 +323,23 @@ http://Manis.coffee/
           </div>
      </footer>
 
-
      <!-- SCRIPTS -->
      <script src="js/jquery.js"></script>
      <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/wow.min.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/jquery.magnific-popup.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
      <script src="js/custom.js"></script>
 </body>
+<script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer>
+</script>
+<script>window.addEventListener("load",function()
+{window.wpcc.init({"corners":"large","colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#d9baea"},
+"button":{"background":"#d9baea","text":"#000000"}},
+"content":{"message":"we are available only In Chennai.\nJoin our","link":"Telegram account","href":"https://t.me/abcd"}
+,"transparency":"10"})})
+;</script>
+</section>
 </html>
