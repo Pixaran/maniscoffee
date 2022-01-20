@@ -337,7 +337,6 @@
 	border-radius: 0.5rem;
 	background-color: #ce3232;
 	color: #fff;
-	font: 700px 0.75rem/0 "Montserrat", sans-serif;
 	text-decoration: none;
 	transition: all 0.2s;
 }
@@ -886,4 +885,92 @@ flex-direction: column;
 }
 .active:after {
     content: "\2796";
+}
     /* Unicode character for "minus" sign (-) */
+/*Cookie Consent Begin*/
+#cookieConsent {
+    background-color: rgba(20,20,20,0.8);
+    font-size: 14px;
+    color: #ccc;
+	z-index: 999;
+	width: 350px;
+	box-sizing: border-box;
+	padding: 30px 30px 30px 30px;
+	overflow: hidden;
+	position: fixed;
+    bottom: 30px;
+	left: 30px;
+	display: none;
+	border-radius: 9px;
+
+}
+#cookieConsent a {
+    color: #4B8EE7;
+    text-decoration: none;
+}
+
+#cookieConsent a.cookieConsentOK {
+	display: inline-block;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 14px;
+	background: #4b0082;
+	box-sizing: border-box; 
+	padding: 15px 24px;
+	text-align: center;
+	transition: background 0.3s;
+	border-radius: 5px;
+}
+#cookieConsent a.cookieConsentOK:hover {
+	cursor: pointer;
+	background: #3E9B67;
+}
+@media (max-width: 500px) {
+
+	#cookieConsent {
+		bottom: 0px !important;
+		right: 0px !important;
+		left: 0px !important;
+		width: 100%  !important;
+		border-radius:0px !important;
+	}
+	
+	    /*---------------------------------------
+    SERVICES            
+  -----------------------------------------*/
+}.service-section {
+  text-align: center;
+  padding: 4em 0;
+}
+.service-grid h4 {
+  font-size: 1.5em;
+  margin: 0.9em 0;
+}
+.service-grid p {
+  font-size: 1em;
+  font-weight: 400;
+  color: #9CA69D;
+    line-height: 1.8em;
+}
+span.fa.fa-coffee {
+  font-size: 2em;
+  color: #C6D9C7;
+  border-radius: 50px;
+  border: 2px solid;
+  padding: .5em;
+}
+span.fa.fa-truck{
+font-size: 2em;
+  color: #C6D9C7;
+  border-radius: 50px;
+  border: 2px solid;
+  padding: .5em;
+}
+span.fa.fa-handshake-o{
+font-size: 2em;
+  color: #C6D9C7;
+  border-radius: 50px;
+  border: 2px solid;
+  padding: .5em;
+}
