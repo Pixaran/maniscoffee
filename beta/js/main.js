@@ -13,41 +13,7 @@
           } else {
             $(".navbar-fixed-top").removeClass("top-nav-collapse");
           }
-    });
-
-    // SLIDER
-    $('.owl-carousel').owlCarousel({
-      animateOut: 'fadeOut',
-      items:1,
-      loop:true,
-      autoplayHoverPause: false,
-      autoplay: true,
-      smartSpeed: 1000,
-    })
-
-    // PARALLAX EFFECT
-    $.stellar({
-      horizontalScrolling: false,
     }); 
-
-    // MAGNIFIC POPUP
-    $('.image-popup').magnificPopup({
-        type: 'image',
-        removalDelay: 300,
-        mainClass: 'mfp-with-zoom',
-        gallery:{
-          enabled:true
-        },
-        zoom: {
-        enabled: true, // By default it's false, so don't forget to enable it
-
-        duration: 300, // duration of the effect, in milliseconds
-        easing: 'ease-in-out', // CSS transition easing function
-        opener: function(openerElement) {
-        return openerElement.is('img') ? openerElement : openerElement.find('img');
-        }
-      }
-    });  
 
     // SMOOTHSCROLL
     $(function() {

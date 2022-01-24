@@ -1,5 +1,4 @@
 ﻿  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-  @import url('../../css-1.css');
   
   html {
   scroll-behavior: smooth;
@@ -15,7 +14,7 @@
      TYPOGRAPHY              
   -----------------------------------------*/
 
-  h1,h2,h3,h4,h5,h6 {
+  h1,h2,h3,h4,h5 {
     font-weight: bold;
     line-height: inherit;
   }
@@ -134,7 +133,6 @@
 
   .section-btn {
     background: #ce3232;
-    border-radius: 0;
     border: 0;
     color: #f9f9f9;
     font-size: inherit;
@@ -583,10 +581,9 @@
     }
   }
 
-
   @media only screen and (max-width: 992px) {
     section {
-      padding: 40px 0;
+      padding: 25px 0;
     }
 
     .custom-navbar .section-btn {
