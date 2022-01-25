@@ -262,13 +262,6 @@ $("input#wosearch").keyup(function(){
     
 </script>
 
-<!-- script id="item-template" type="text/x-handlebars-template">
-<ul style="list-style-type:none;">
-	{{#each this}}
-		<li class="box is-marginless"><b>{{Item}} </b><span style="padding-top:0px;" class="button is-success is-outlined is-pulled-right">Add</span><span class="is-pulled-right" style="padding-right:20px;"><span class="is-size-7 has-text-grey-light">INR</span> {{Price}}  </span></li>
-	{{/each}}
-</ul>
-</script -->
 
 <style>
 html{scroll-behavior: smooth;}
@@ -418,26 +411,6 @@ waddr = buildAddr(waddr);
 updateC();
 
 } // end of updateWOaddress
-
-
-/*    
-var fixmeTop = $('.fixme').offset().top;
-$(window).scroll(function() {
-    var currentScroll = $(window).scrollTop();
-    if (currentScroll >= fixmeTop) {
-        $('.fixme').css({
-            position: 'fixed',
-            top: '0',
-            width: 'inherit'
-        });
-    } else {
-        $('.fixme').css({
-            position: 'static'
-        });
-    }
-});
-*/
-
 function notifyC(themsg,ntype){
     //$("#notification").clearQueue();
     $("#notification").finish();
@@ -907,7 +880,7 @@ document.getElementById("wohref").setAttribute('href', wlink);
 }
 }
 
-
+</style>
 
 
 </html>
