@@ -162,6 +162,7 @@
     border: none;
     margin-bottom: 0;
     padding: 25px 0;
+
   }
 
   .custom-navbar .navbar-brand {
@@ -235,7 +236,7 @@
 
   .custom-navbar .navbar-toggle {
     border: none;
-    padding-top: 10px;
+    padding-top: 10px;	
   }
 
   .custom-navbar .navbar-toggle {
