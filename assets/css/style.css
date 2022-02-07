@@ -961,8 +961,8 @@ font-size: 2em;
 .listing
 {
   list-style: none;
-  margin: 0;
-  padding: 30px;
+  margin: 25px;
+  padding: 25px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
