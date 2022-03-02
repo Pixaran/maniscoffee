@@ -1,34 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-<head/>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<link type="text/css" rel="stylesheet" id="dark-mode-custom-link"/>
-<link type="text/css" rel="stylesheet" id="dark-mode-general-link"/>
-<style lang="en" type="text/css" id="dark-mode-custom-style"/>
-<style lang="en" type="text/css" id="dark-mode-native-style"/>
-<!--  This is the parent sitemap linking to additional sitemaps for products, collections and pages as shown below. The sitemap can not be edited manually, but is kept up to date in real time.  -->
-
-<url>
-<loc>https://manis.coffee/Order</loc>
-<lastmod>2022-03-02T07:20:36+05:30</lastmod>
-<changefreq>daily</changefreq>
-</url>
-<url>
-<loc>https://manis.coffee/#contact</loc>
-<lastmod>2022-03-02T07:20:36+05:30</lastmod>
-<changefreq>daily</changefreq>
-</url>
-<url>
-<loc>https://manis.coffee/T&C.pdf</loc>
-<lastmod>2022-03-02T07:20:36+05:30</lastmod>
-<changefreq>monthly</changefreq>
-</url>
-<url>
-<loc>https://manis.coffee/#faq</loc>
-<lastmod>2022-03-02T07:20:36+05:30</lastmod>
-<changefreq>daily</changefreq>
-</url>
-
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://www.manis.coffee</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://www.manis.coffee/order</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>daily</changefreq>
+  </url>  
+  <url>
+    <loc>https://www.manis.coffee/#contact</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>daily</changefreq>
+  </url>  
+  <url>
+    <loc>https://www.manis.coffee/T&amp;C.pdf</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>  
+  <url>
+    <loc>https://www.manis.coffee/#faq</loc>
+    <lastmod>2022-03-02</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
-</sitemapindex>
+<!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
