@@ -44,13 +44,11 @@ http://Manis.coffee/
     <!-- Your Chat plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat">
     </div>
-
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "108022891844265");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
-
     <!-- Your SDK code -->
     <script>
       window.fbAsyncInit = function() {
@@ -59,7 +57,6 @@ http://Manis.coffee/
           version          : 'v13.0'
         });
       };
-
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
