@@ -444,7 +444,7 @@ http://Manis.coffee/
     z-index: 9999;
     background-color: #ffffff;
     padding: 10px 10px;
-    position: absolute;
+    position: fixed;
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
@@ -453,9 +453,15 @@ http://Manis.coffee/
 }
 
 .popup button{
+border-radius: 100%;
+background: #f91b2e;
+    width: 20px;
+    height: 20px;
     display: block;
+    color: #f91b2e;
     margin:  0 0 10px auto;
     outline: none;
+        border: none;
     cursor: pointer;
 }
     </style>
@@ -467,7 +473,7 @@ window.addEventListener("load", function(){
         function open(event){
             document.querySelector(".popup").style.display = "block";
         },
-        2000 
+        1000 
     )
 });
 

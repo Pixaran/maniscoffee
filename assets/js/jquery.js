@@ -9,4 +9,5 @@ $(document).ready(function(){
     $("#closeCookieConsent, .cookieConsentOK").click(function() {
         $("#cookieConsent").fadeOut(200);
     }); 
+
 });
