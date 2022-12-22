@@ -64,12 +64,7 @@ http://Manis.coffee/
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-});
     </script>
-        <div class="popup">
-        <button id="close">&times;</button>
-<img src="assets/images/Restoguru.jpeg" height="350" width="auto"></img>
-    </div>
      <!-- MENU -->
      <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
           <div class="container">
@@ -439,49 +434,6 @@ http://Manis.coffee/
                </div>
           </div>
      </footer>
-	  <style>
-.popup{
-    z-index: 9999;
-    background-color: #ffffff;
-    padding: 10px 10px;
-    position: fixed;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.popup button{
-border-radius: 100%;
-background: #f91b2e;
-    width: 20px;
-    height: 20px;
-    display: block;
-    color: #f91b2e;
-    margin:  0 0 10px auto;
-    outline: none;
-        border: none;
-    cursor: pointer;
-}
-    </style>
-
-    <!--Script-->
-    <script type="text/javascript">
-window.addEventListener("load", function(){
-    setTimeout(
-        function open(event){
-            document.querySelector(".popup").style.display = "block";
-        },
-        1000 
-    )
-});
-
-
-document.querySelector("#close").addEventListener("click", function(){
-    document.querySelector(".popup").style.display = "none";
-});
-    </script>
 	 <!--Remainder Banner-->
 	 <div id="cookieConsent">
     We use whatsapp to recive order.<br>Delivery only in Chennai.</br>
