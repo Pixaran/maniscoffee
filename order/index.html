@@ -686,7 +686,7 @@ document.getElementById('wocart').innerHTML += '<div class="panel-tabs is-fullhd
 var cntItems = arrayColumn(cartArray, 1).reduce((a, b) => a + b, 0);
 
 if(cntItems > 0){
-var delC = cartV<600?30:0;//delC = delC.replace(/,/g, "");
+var delC = cartV<620?40:0;//delC = delC.replace(/,/g, "");
 
 Number.prototype.toLocaleFixed = function(n) {
     return this.toLocaleString(undefined, {
@@ -730,9 +730,6 @@ function thePaynote(pMode,pNote,pValue){
     var payN = 'Cash on delivery';
 
     switch(pMode) {
-        case 'Show Note':
-            payN = pNote;
-            break;
         case 'UPI - India':
             var upivar = 'pn=Manis Coffee&pa='+pNote+'&tn=Order at Online&am='+pValue+'&cu=INR';
             //console.log(escape(encodeURI(upivar)));
@@ -744,10 +741,6 @@ function thePaynote(pMode,pNote,pValue){
         case 'Payment link':
             payN = 'Please share screenshot after payment.%0A'+pNote;
             break;
-        case 'Append Amount to Link':
-            payN = 'Please share screenshot after payment.%0A'+ escape(encodeURI(pNote+pValue));
-            break;
-
     } // end of payment mode switch
 
     return payN;
@@ -791,8 +784,7 @@ document.getElementById("wohref").setAttribute('href', wlink);
 </div></center>
 
 <center><b style="font-size:25px">Our Reviews</b></center>
-<div class="fb-comments" style="margin-right: 40px;
-  margin-left: 40px;" data-href="https://www.manis.coffee/order" data-width="100%" data-numposts="5"></div>
+<div class="fb-comments" style="margin: auto;" data-href="https://www.manis.coffee/order" data-width="100%" data-numposts="5"></div>
 
 <!-- modal starts -->
 <div id="modal" class="modal" style="z-index:50;">
@@ -808,8 +800,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
    <button class="modal-close is-large" aria-label="close"></button>
 </div>
 <!-- modal ends -->
-
-
 <script type="text/javascript">
   var renderGoogleInvisibleRecaptcha = function() {
     for (var i = 0; i < document.forms.length; ++i) {
