@@ -458,14 +458,11 @@ html{scroll-behavior: smooth;}
   </div>
 
     <div class="field">
-
   <label class="label is-marginless">Landmark / Zipcode</label>
     <input class="input woaddr" type="text" id="wolandmark" onchange="updateWOaddress();" spellcheck="false" data-ms-editor="true">
-
   </div>
 </div>
 </div>
-
 
 <div id="woorderbox" class="box has-background-white">
 <h2 class="subtitle">Your Order</h2>
@@ -584,11 +581,9 @@ function customBox(itemtext, qty, rate){
                 var scost = xsnum(arrPara[index1]);
 
                 custHTML += '<input style="min-width:30px;" class="woccheck" type="checkbox" data-sitem="'+sitem+'" data-scost='+scost+' data-smax='+maxI+' id="and'+index+'" name="and'+index+'" value="-" onclick="custItem(\''+baseitem+'\','+rate+',\'and'+index+'\', this);" /><span style="min-width:300px;"> '+sitem+' <small class="is-size-7 has-text-grey-light">+INR '+scost+'</small></span><br>';
-
               });
               custHTML += '<hr>';
             } // end of AND selects
-
         });
 
 function xsitem(str){
@@ -605,11 +600,9 @@ return str.lastIndexOf("((") > -1 ? str.substring(
                     str.lastIndexOf("))")
                 ).trim() : 0;
 } // end of xsnum
-
 $("html").addClass("is-clipped");
 $("#modal").addClass("is-active");
 $("#modalcontent").html(custHTML + '</form><span class="level is-mobile level-left"><span><a id="addCitemCart"><i style="color:var(--wotheme);" class="fa fa-2x fa-plus-square-o"></i></a></span><span class="has-text-grey">&nbsp;&nbsp;INR&nbsp;<span id="citrate">'+rate+'</span></span></span>');
-
 custItem(baseitem,rate,'','');
 
 document.getElementById("addCitemCart").addEventListener("click", function(){
@@ -620,7 +613,6 @@ document.getElementById("addCitemCart").addEventListener("click", function(){
 } // ~~~ end of customBox ~~~
 
 function custItem(baseitem,rate,modid,e){
-
 if(modid!== ''){
     var chkcnt = $('#'+modid+':checked').length;
     var mxcnt = parseInt($('#'+modid).attr('data-smax'));
@@ -651,9 +643,6 @@ document.getElementById("citrate").innerHTML= crate;
 console.log('<pre>'+customitem+'</pre><p>'+rate+'</p>');
 
 } // end of custItem
-
-
-
 function updateC(itm,qty,rte){
 
 var newA =[itm,qty,rte];
@@ -676,7 +665,6 @@ $.each(cartArray, function (i) {
     }
  }
 });
-
 if (!exists) {
  	cartArray.push(newA);
 }
@@ -684,7 +672,6 @@ if (!exists) {
 }
 
 //console.log(arrayColumn(cartArray, 1).reduce((a, b) => a + b, 0)+' items');
-
 document.getElementById('wocart').innerHTML = "";
 
 $.each(cartArray, function (i) {
@@ -730,7 +717,6 @@ $('#footsum').hide();
 
     //waddr = urlencode(toTitle(waddr));
     //console.log(waddr);
-
 upLink();
 
 // console.log(cartArray);
@@ -746,16 +732,6 @@ function thePaynote(pMode,pNote,pValue){
     switch(pMode) {
         case 'Show Note':
             payN = pNote;
-            break;
-        case 'PayPal - Me':
-            payN = 'Click to pay using PayPal%0Ahttps://paypal.me/'+pNote+'/'+pValue;
-            payN += '%0APlease share screenshot after payment.';
-            break;
-        case 'USSD - Rwanda':
-            var ussdrw = 'amt='+pValue+'&ussdid='+pNote;
-            ussdrw = escape(encodeURI(ussdrw));
-            payN = 'Click to pay using thru USSD%0Ahttps://whatsorder.com/p/ussdrw.php?'+ussdrw;
-            payN += '%0APlease share screenshot after payment.';
             break;
         case 'UPI - India':
             var upivar = 'pn=Manis Coffee&pa='+pNote+'&tn=Order at Online&am='+pValue+'&cu=INR';
@@ -814,8 +790,8 @@ document.getElementById("wohref").setAttribute('href', wlink);
 <a class="has-text-white" href="">Click to refresh</a>
 </div></center>
 
-<center><b style="font-size:25px">Reviews</b></center>
-<div class="fb-comments" style="padding: 0px 40px 0px 40px;" data-href="https://www.manis.coffee/order" data-width="100%" data-numposts="5"></div>
+<center><b style="font-size:25px">Our Reviews</b></center>
+<div class="fb-comments" style="padding: 0px 40px 0px 40px;" data-href="https://www.manis.coffee/order" data-width="fullwidth" data-numposts="5"></div>
 
 <!-- modal starts -->
 <div id="modal" class="modal" style="z-index:50;">
@@ -824,7 +800,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
       <div class="box">
             <div class="media-content">
                <div id="modalcontent" class="content">
-
                </div>
             </div>
       </div>
@@ -835,7 +810,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
 
 
 <script type="text/javascript">
-
   var renderGoogleInvisibleRecaptcha = function() {
     for (var i = 0; i < document.forms.length; ++i) {
       var form = document.forms[i];
@@ -845,7 +819,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
       }
 
       (function(frm){
-
         var holderId = grecaptcha.render(holder,{
           'sitekey': '6LenZTceAAAAAPvHKKvwKZJChYhpuDewK5mBGcAm',
           'size': 'invisible',
@@ -854,19 +827,14 @@ document.getElementById("wohref").setAttribute('href', wlink);
             HTMLFormElement.prototype.submit.call(frm);
           }
         });
-
         frm.onsubmit = function (evt){
           evt.preventDefault();
           grecaptcha.execute(holderId);
         };
-
       })(form);
     }
   };
-
-
 </script>
-
 <script src="https://www.google.com/recaptcha/api.js?onload=renderGoogleInvisibleRecaptcha&render=explicit" async defer></script>
 
    <center >
@@ -875,23 +843,18 @@ document.getElementById("wohref").setAttribute('href', wlink);
 <footer class="footer-distributed">
 
 			<div class="footer-right">
-
 				<a href="http://instagr.am/maniscoffeein"><i class="fa fa-instagram"></i></a>
 				<a onclick="alert('This will be available soon, stay tuned')"><i class="fa fa-twitter"></i></a>
 				<a href="https://bit.ly/3CjDxET"><i class="fa fa-google"></i></a>
 				<a href="https://www.addtoany.com/share#url=https%3A%2F%2Fwww.manis.coffee%2Forder&amp;title=Manis%20Coffee" target="_blank"><i class="fa fa-share"></i></a>
-
 			</div>
 
 			<div class="footer-left">
 
 				<p class="footer-links">
 					<a class="link-1" href="https://www.manis.coffee">Home</a>
-
 				<a href="https://www.manis.coffee/#about">About</a>
-
 					<a href="https://www.manis.coffee/T&C.pdf">T&C</a>
-
 					<a href="https://www.manis.coffee/#contact">Contact</a>
 				</p>
 
@@ -899,7 +862,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
 			</div>
       <center  class= "img"><img src = "./index_files/Bhim-Upi.png" alt="Upi SVG"   width="120"
      height="15"></center>
-
 		</footer>
 
 <style>@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
@@ -975,7 +937,6 @@ document.getElementById("wohref").setAttribute('href', wlink);
 }
 
 .footer-distributed .footer-right a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
-
 .footer-distributed p.footer-links a:hover{text-decoration:underline;}
 
 /* Media Queries */
