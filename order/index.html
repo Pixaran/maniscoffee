@@ -79,7 +79,7 @@ if (last) {
   	location.reload(true);
     localStorage.setItem('wolastupdate', now);
   }else{
-    //alert('save');  
+    //alert('save');
     localStorage.setItem('wolastupdate', now);
   }
 }
@@ -130,7 +130,7 @@ function checkIt(){
     if(cartV < minV && (!document.getElementById('wopic').checked)){
         // minimum order value
         notifyC("Minimum order value is "+minV, "warning");
-        return false;   
+        return false;
     }
     if((waddr.trim() !== "")&&(cartArray.length>0)){
         $("#wohref").addClass("is-loading");
@@ -144,7 +144,7 @@ function checkIt(){
         } else if (waddr.trim() === ""){
             //check address
         notifyC("Please complete your details", "warning");
-        return false;            
+        return false;
         }
     }
 }
@@ -163,7 +163,7 @@ $(document).ready(function(){
     } catch (error) {
         console.error(error);
     }
-    
+
    var request = new XMLHttpRequest();
    var params = "wohelp="+urlencode(view0);
    request.open("POST", "wohelper.php", true);
@@ -176,9 +176,9 @@ $(document).ready(function(){
             loadCatalog(JSON.parse(this.responseText));
         }
    };
-   request.send(params);    
+   request.send(params);
 
-function loadCatalog(view){    
+function loadCatalog(view){
     $.each(view, function (index) {
     var categ = view[index].Category;
     if ($.inArray(categ, catArray) == -1) {
@@ -189,7 +189,7 @@ function loadCatalog(view){
     $.each(catArray, function (i) {
     $catTab.append('<li><a href="#' + catArray[i].replace(/\s+/g,"-") + '">' + catArray[i] + '</a></li>');
     });
-    
+
     var gview = view.reduce(function(result, current) {
     result[current.Category] = result[current.Category] || [];
     result[current.Category].push(current);
@@ -197,7 +197,7 @@ function loadCatalog(view){
     }, {});
     //console.log(JSON.stringify(gview));
     //alert(gview.Breakfast[0].Item);
-    
+
     var gmenu = "";
     var suf = "";
 	$.each(gview, function(gindex) {
@@ -223,20 +223,20 @@ function loadCatalog(view){
 
     $('.woitemimage a').click(function(event){
        event.stopPropagation();
-    });    
-    
+    });
+
      $(".woitemimage").click(function() {
      var bg = $(this).css('background-image');
      bg = bg.replace('url(','').replace(')','').replace(/\"/gi, "");
      //alert(bg);
      //if(/(jpg|gif|jpeg|png|google)$/.test(bg)){
-     if(!bg.includes("whatsorder.com")){     
+     if(!bg.includes("whatsorder.com")){
         $("html").addClass("is-clipped");
         $("#modal").addClass("is-active");
         $("#modalcontent").html('<center><img src = "'+bg+'" alt="Image"></center>');
      }
-     });    
-    
+     });
+
 } // end of loadcatalog
 
 $("#worefresh").hide();
@@ -258,20 +258,20 @@ $("input#wosearch").keyup(function(){
     notifyC("0 items", "warning");
   }
   }
-}); 
-     
+});
+
      $(".modal-close").click(function() {
      $("html").removeClass("is-clipped");
      $(this).parent().removeClass("is-active");
      });
-     
+
      $(".modal-background").click(function() {
      $("html").removeClass("is-clipped");
      $(this).parent().removeClass("is-active");
      });
 
 }); // end of document ready
-    
+
 </script>
 
 
@@ -300,7 +300,7 @@ html{scroll-behavior: smooth;}
 <div id="footsum" class="card" style="min-width:100%; z-index:15; padding:10px 30px; position:fixed; bottom:0px;display:none;">
   <div id="wofootsum" class="is-pulled-left" style="margin-top: calc(.300em - 1px);"></div><div class="is-pulled-right"><a href="#addr" class="button is-success"><i class="has-text-white fa fa-shopping-cart"></i></a></div>
 </div>    <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0" nonce="y90xVk7r"></script>
+<script async defer crossorigin="anonymous" src="(function _(a,b,c,d,e){var f=window.console;f&&Math.floor(new Date().getTime()/1e3)-b>7*24*60*60&&f.warn("The Facebook JSSDK is more than 7 days old.");if(window[c])return;if(!window.JSON)return;var g=window[c]={__buffer:{replay:function(){var a=this,b=function(d){var b=window[c];a.calls[d][0].split(".").forEach(function(a){return b=b[a]});b.apply(null,a.calls[d][1])};for(var d=0;d<this.calls.length;d++)b(d);this.calls=[]},calls:[],opts:null},getUserID:function(){return""},getAuthResponse:function(){return null},getAccessToken:function(){return null},init:function(a){g.__buffer.opts=a}};for(b=0;b<d.length;b++){f=d[b];if(f in g)continue;var h=f.split("."),i=h.pop(),j=g;for(var k=0;k<h.length;k++)j=j[h[k]]||(j[h[k]]={});j[i]=function(a){if(a==="init")return;return function(){g.__buffer.calls.push([a,Array.prototype.slice.call(arguments)])}}(f)}k=document.createElement("script");k.src=a;k.async=!0;e&&(k.crossOrigin="anonymous");h=document.getElementsByTagName("script")[0];h.parentNode&&h.parentNode.insertBefore(k,h)})("https:\/\/connect.facebook.net\/en_GB\/sdk.js?hash=cb4de39e8e344a3a51b965626220e90f", 1700732389, "FB", ["AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.clearAppVersion","AppEvents.clearUserID","AppEvents.getAppVersion","AppEvents.getUserID","AppEvents.logEvent","AppEvents.logPageView","AppEvents.logPurchase","AppEvents.setAppVersion","AppEvents.setUserID","AppEvents.updateUserProperties","Canvas.Plugin.showPluginElement","Canvas.Plugin.hidePluginElement","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.startTimer","Canvas.stopTimer","Event.subscribe","Event.unsubscribe","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"], true);" nonce="y90xVk7r"></script>
 <section class="section has-background-white"><div class="container"><div class="media">
 
 <div class="media-left"><img src="./index_files/Exclude.png" class="image is-64x64"></div>
@@ -315,8 +315,8 @@ html{scroll-behavior: smooth;}
 <div class="column is-two-thirds">
 
 <div class="tabs has-background-white" style="z-index:10;position:-webkit-sticky;position:sticky;top:0;border-top:#000 solid 1px;">
- 
- <div id="wosearchdiv" class="tabs" style="display:none; margin-bottom:0rem; width:100%;"><input name="wosearch" id="wosearch" type="text" style="width:100%;border:0;padding-left: calc(.625em - 1px);" placeholder="Type search text here..." spellcheck="false" data-ms-editor="true"><a onclick="showStext();">X</a></div>    
+
+ <div id="wosearchdiv" class="tabs" style="display:none; margin-bottom:0rem; width:100%;"><input name="wosearch" id="wosearch" type="text" style="width:100%;border:0;padding-left: calc(.625em - 1px);" placeholder="Type search text here..." spellcheck="false" data-ms-editor="true"><a onclick="showStext();">X</a></div>
 
   <ul id="catList">
     <li style="z-index:100;position:-webkit-sticky;position:sticky;left:0;"><a style="border-style:none;" onclick="showStext();"><svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fa" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><i class="fa fa-search"></i></a></li>
@@ -446,22 +446,22 @@ html{scroll-behavior: smooth;}
   <label class="label is-marginless">Name</label>
     <input class="input woaddr" type="text" id="woname" onchange="updateWOaddress();" spellcheck="false" data-ms-editor="true">
   </div>
- 
-  <div class="field">      
+
+  <div class="field">
   <label class="label is-marginless">Contact Number</label>
     <input class="input woaddr" type="tel" id="womobile" onchange="updateWOaddress();">
   </div>
-<div> 
-    <div class="field">      
+<div>
+    <div class="field">
   <label class="label is-marginless">Address</label>
     <input class="input woaddr" type="text" id="woaddress" onchange="updateWOaddress();" spellcheck="false" data-ms-editor="true">
   </div>
-  
+
     <div class="field">
-        
+
   <label class="label is-marginless">Landmark / Zipcode</label>
     <input class="input woaddr" type="text" id="wolandmark" onchange="updateWOaddress();" spellcheck="false" data-ms-editor="true">
-    
+
   </div>
 </div>
 </div>
@@ -524,7 +524,7 @@ waddr = {
 try {
 localStorage.woaddress1 = JSON.stringify(waddr);
 } catch (error) {
-    console.log(error);    
+    console.log(error);
 }
 waddr = buildAddr(waddr);
 updateC();
@@ -557,7 +557,7 @@ function customBox(itemtext, qty, rate){
       var baseitem = arrSelect[0];
       custHTML = '<h3>'+arrSelect[0] + '</h3><hr>';
       //console.log(arrSelect.length);
-     
+
       arrSelect.forEach((value, index) => {
         if (index < 1) return;
             if(value.search("//") > -1) {
@@ -588,7 +588,7 @@ function customBox(itemtext, qty, rate){
               });
               custHTML += '<hr>';
             } // end of AND selects
-       
+
         });
 
 function xsitem(str){
@@ -665,7 +665,7 @@ var exists = false;
 if (itm !== undefined) {
 //console.log(newA[0]);
 // start of cartArray modify
-$.each(cartArray, function (i) {    
+$.each(cartArray, function (i) {
  if(cartArray[i][0].toLowerCase() == newA[0].toLowerCase()){
  	//console.log(i);
   cartArray[i][1] += newA[1];
@@ -742,7 +742,7 @@ notifyC("Cart updated", "info");
 function thePaynote(pMode,pNote,pValue){
     var pCur = 'INR';
     var payN = 'Cash on delivery';
-    
+
     switch(pMode) {
         case 'Show Note':
             payN = pNote;
@@ -770,10 +770,10 @@ function thePaynote(pMode,pNote,pValue){
             break;
         case 'Append Amount to Link':
             payN = 'Please share screenshot after payment.%0A'+ escape(encodeURI(pNote+pValue));
-            break;            
-            
+            break;
+
     } // end of payment mode switch
-    
+
     return payN;
 }
 
@@ -793,7 +793,7 @@ if (wlink !== "") {
 }
 
 document.getElementById("wohref").setAttribute('href', wlink);
-    
+
 } // end of upLink
 
 </script>
@@ -814,7 +814,9 @@ document.getElementById("wohref").setAttribute('href', wlink);
 <a class="has-text-white" href="">Click to refresh</a>
 </div></center>
 
+<center><b style="font-size:25px">Reviews</b></center>
 <div class="fb-comments" data-href="https://www.manis.coffee/order" data-width="100%" data-numposts="5"></div>
+
 <!-- modal starts -->
 <div id="modal" class="modal" style="z-index:50;">
    <div class="modal-background"></div>
@@ -822,7 +824,7 @@ document.getElementById("wohref").setAttribute('href', wlink);
       <div class="box">
             <div class="media-content">
                <div id="modalcontent" class="content">
-                 
+
                </div>
             </div>
       </div>
@@ -895,7 +897,7 @@ document.getElementById("wohref").setAttribute('href', wlink);
 
 				<p>Manis Coffee &copy; 2023</p>
 			</div>
-      <center  class= "img"><img src = "./index_files/Bhim-Upi.png" alt="Upi SVG"   width="120" 
+      <center  class= "img"><img src = "./index_files/Bhim-Upi.png" alt="Upi SVG"   width="120"
      height="15"></center>
 
 		</footer>
