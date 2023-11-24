@@ -1,5 +1,5 @@
-@font-face {src: url('https://www.manis.coffee/assets/Montserrat.ttf'); }
- @font-face {src: url('https://www.manis.coffee/assets/Montserrat-Bold.ttf');}
+@font-face { font-family: 'Montserrat'; src: url('https://www.manis.coffee/assets/Montserrat.ttf'); }
+ @font-face {font-family: 'Montserrat'; src: url('https://www.manis.coffee/assets/Montserrat-Bold.ttf');}
   html {
   scroll-behavior: smooth;
 }
