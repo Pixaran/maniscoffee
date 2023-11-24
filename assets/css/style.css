@@ -1,5 +1,5 @@
-@import src: url('../assets/Montserrat.ttf');
- @import src: url('./assets/Montserrat-Bold.ttf');
+@font-face {src: url('/assets/Montserrat.ttf'); }
+ @font-face {src: url('assets/Montserrat-Bold.ttf');}
   html {
   scroll-behavior: smooth;
 }
