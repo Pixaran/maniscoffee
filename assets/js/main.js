@@ -13,7 +13,7 @@
           } else {
             $(".navbar-fixed-top").removeClass("top-nav-collapse");
           }
-    }); 
+    });
 
     // SMOOTHSCROLL
     $(function() {
@@ -24,7 +24,7 @@
           }, 1000);
             event.preventDefault();
       });
-    });  
+    });
 
     // WOW ANIMATION
     new WOW({ mobile: false }).init();
