@@ -1,4 +1,5 @@
 @font-face { font-family: Montserrat, sans-serif; src: url('Montserrat.ttf'); }
+@font-face { font-family: Montserrat; font-weight: bold; src: url('Montserrat-Bold.ttf');}
 
   html {
   scroll-behavior: smooth;
