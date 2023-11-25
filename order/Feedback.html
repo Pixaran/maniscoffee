@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
-    
+
     <style type="text/css">
         body { background-color:#ffffff;}
 h1 { color:#ffffcc; font-family:Segoe UI,Arial,sans-serif; font-size:30pt; }
@@ -65,13 +65,10 @@ p { color:#000000; font-family:Segoe UI,Arial,sans-serif; font-size:12pt; }
         /* Landscape phones and down */
         @media (max-width: 480px) {
             .mainContainer
-
         {
             width: 100%;
         }
-
         }
-
         @media (min-width: 768px) {
             .mainContainer {
                 width: 80%;
@@ -79,15 +76,10 @@ p { color:#000000; font-family:Segoe UI,Arial,sans-serif; font-size:12pt; }
                 margin-right: auto;
             }
         }
-
         .internal {
             display: none;
         }
-
-        
-
     </style>
-
     <script type="text/javascript">
       function addHiddenField(formID, name, value)
 {
@@ -104,12 +96,12 @@ function GetCookie(cookie_name)
     {
     cookie_start=document.cookie.indexOf(cookie_name + "=");
     if (cookie_start!=-1)
-      { 
-      cookie_start=cookie_start + cookie_name.length+1; 
+      {
+      cookie_start=cookie_start + cookie_name.length+1;
       cookie_end=document.cookie.indexOf(";",cookie_start);
       if (cookie_end==-1) cookie_end=document.cookie.length;
       return unescape(document.cookie.substring(cookie_start,cookie_end));
-      } 
+      }
     }
   return "";
 }
@@ -118,43 +110,30 @@ function str_replace(search, replace, subject) {
 	return subject.split(search).join(replace);
 }
     </script>
-
-
     <!-- DAFORMJSBEGIN -->
     <!-- JSCAPTCHAREFRESH -->
-
     <script type="text/javascript">
-
     function SetCookieValues() {
-      
 }
-
     function SetCookies() {
-        
 }
 
     </script>
-
     <script type="text/javascript">
 function chkFormular()
 {
 	return true;
 }
 </script>
-
-
-    
 </head>
 <body onLoad="SetCookieValues();">
-  
+
 <div class="w3-card-12 w3-white mainContainer">
   <!-- FORMTITLE_BEGIN -->
   <div class="w3-container w3-brown">
       <h1>Feedback form</h1>
   </div>
 <!-- FORMTITLE_END -->
-
-
   <form id="DA-Formmaker-Form" action="https://www.ekiwi-scripts.de/form/v4/formmail_v4.php" class="w3-container" method="POST" name="DAFORM" onSubmit="SetCookies();return chkFormular();" enctype="multipart/form-data" target="_self">
   <input type="hidden" name="formid" value="528451">
   <input type="hidden" name="settings" value="cXZ7ZHJrY2Vicg==">
@@ -172,13 +151,12 @@ function chkFormular()
   <input type="hidden" name="copyfields" value="-1">
   <input type="hidden" name="copyip" value="-1">
   <input type="hidden" name="hide_empty_fields" value="0">
-  <input type="hidden" name="settings_encoding" value="utf-8">  
-  <input type="hidden" name="conf_pdf" value="0">    
+  <input type="hidden" name="settings_encoding" value="utf-8">
+  <input type="hidden" name="conf_pdf" value="0">
   <input type="hidden" name="conf_lang" value="en">
   <input type="hidden" name="ReturnToSender" value="0">
   <input type="hidden" name="conf_copy_attachments" value="0">
 
-  
 <div class="w3-container" id="daf-76411">
 	<p>
 	<label>Name</label>
@@ -227,7 +205,6 @@ function chkFormular()
 </div>
 
 <!-- CAPTCHA -->
-
 <div class="w3-container">
     <p class="textend"></p>
   <hr/>
@@ -237,29 +214,21 @@ function chkFormular()
   <div class="w3-col m6">
     <div class="w3-container">
       <p>
-      <button type="submit" class="w3-btn w3-orange">Send</button>     
-      
-      
+      <button type="submit" class="w3-btn w3-orange">Send</button>
       </p>
     </div>
   </div>
   <div class="w3-col m6">
     <div style="text-align: right;" class="w3-container">
       <p>
-      
-      
+
       </p>
     </div>
   </div>
 </div>
-
-
 </form>
 
 </div>
-
-
-
 <script type="text/javascript">
   function inIframe () {
       try {
@@ -272,16 +241,13 @@ function chkFormular()
   function openDialog(nameDialog, idOfButton)
   {
     var rect = document.getElementById(idOfButton).getBoundingClientRect();
-
     var paddingTop = 100;
     var newPaddingTop = rect.top - 200;
     if (newPaddingTop < paddingTop)
     {
       newPaddingTop = paddingTop;
     }
-
     document.getElementById(nameDialog).style.display='block';
-
     if (inIframe())
     {
       document.getElementById(nameDialog).style.paddingTop=newPaddingTop + 'px';
@@ -290,15 +256,8 @@ function chkFormular()
 </script>
 
 <script type="text/javascript">
-
-
-
 $(document).ready(function () {
-    
-    
 });
 </script>
-
-
 </body>
 </html>
