@@ -3,9 +3,6 @@
   "use strict";
 
     // MENU
-    $('.navbar-collapse a').on('click',function(){
-      $(".navbar-collapse").collapse('hide');
-    });
 
     $(window).scroll(function() {
       if ($(".navbar").offset().top > 50) {
@@ -14,5 +11,4 @@
             $(".navbar-fixed-top").removeClass("top-nav-collapse");
           }
     });
-
 })(jQuery);
