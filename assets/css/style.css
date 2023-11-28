@@ -561,13 +561,13 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
       top: 80%;
     }
     footer {
-      padding: 60px 0;
+      padding: 0px 0;
       padding-bottom: 60px;
     }
     .footer-open-hour {
       right: 0;
       bottom: 0;
-      margin-top: 30px;
+      margin-top: 0px;
     }
   }
 
