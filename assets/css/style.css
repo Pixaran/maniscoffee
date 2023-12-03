@@ -620,7 +620,7 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
 /*--NEWSLETTER--*/
 
  .home-newsletter {
-padding: 80px 0;
+padding: 30px 0;
 background: skyblue;
 }
 .home-newsletter .single {
@@ -653,7 +653,7 @@ color: #fff;
 
 .faq-heading{
     border-bottom: #777;
-    padding: 20px 30px;
+    padding: 20px 30px 0;
 }
 .faq-container{
 display: flex;
@@ -854,7 +854,6 @@ font-size: 2em;
    width: 100%;
   }
     @media(max-width: 480px){
-  #menu .container{padding-right: 0px; padding-left: 0px;} 
   #menu h3{font-size: 1em;}
   .content{
    width: 40%;
