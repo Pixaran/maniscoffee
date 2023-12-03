@@ -308,7 +308,6 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
     position: absolute;
   }
 
-/*--TEAM--*/
 /*--MENU--*/
 
   #menu {
@@ -784,6 +783,13 @@ font-size: 2em;
   border: 2px solid;
   padding: .5em;
 }
+span.fa.fa-lock{
+font-size: 2em;
+  color: #C6D9C7;
+  border-radius: 50px;
+  border: 2px solid;
+  padding: .5em;
+}
 
  /*-----PRODUCT----*/
  .gallery{
@@ -871,5 +877,4 @@ font-size: 2em;
   font-size: 17px;
   }
  }
-
  }
