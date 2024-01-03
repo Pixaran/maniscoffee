@@ -25,7 +25,7 @@ var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 var waddr = "";
 var cartM = "";
 var cartV = 0;
-var minV = 440 || 0;
+var minV = 540 || 0;
 var catArray = [];
 var payMode = 'UPI - India';
 var payNote = '8072586899@ybl';
@@ -300,14 +300,17 @@ html{scroll-behavior: smooth;}
 <div id="footsum" class="card" style="min-width:100%; z-index:15; padding:10px 30px; position:fixed; bottom:0px;display:none;">
   <div id="wofootsum" class="is-pulled-left" style="margin-top: calc(.300em - 1px);"></div><div class="is-pulled-right"><a href="#addr" class="button is-success"><i class="has-text-white fa fa-shopping-cart"></i></a></div>
 </div>
-<section class="section has-background-white"><div class="container"><div class="media">
+<div class="navbar" id="navbar">
+    <div class="site-name">Manis . Coffee</div>
+    <div class="menu-icon" id="menu-icon">&#9776;</div>
+    <div style="font-size: 12px;" class="menu-items" id="menu-items">
+                        <a  href="#about" class="smoothScroll"><b>ABOUT</b></a>
+                         <a href="#menu" class="smoothScroll"><b>MENU</b></a>
+                         <a href="#contact" class="smoothScroll"><b>CONTACT</b></a>
+                         <a href="#footer" class="smoothScroll"><b>BUSINESS</b></a>
+    </div>
+</div>
 
-<div class="media-left"><img src="./index_files/Exclude.png" alt="Logo" class="image is-64x64"></div>
-<div class="media-content">
-
-<small class="is-uppercase has-text-grey-light">Order on WhatsApp from</small><br><h1 class="title has-text-black">Manis Coffee</h1><h2 class="subtitle has-text-grey-light">70, Alagappa rd, Purasaiwalkam, Chennai-84</h2><span class="is-success tag">We are secure &nbsp;<i class="fa fa-shield"></i></span>
-
-</div></div></div></section>
 <section class="section" style="padding-top:20px;">
 <div class="container">
 <div class="columns">
@@ -751,7 +754,12 @@ if (wlink !== "") {
 document.getElementById("wohref").setAttribute('href', wlink);
 
 } // end of upLink
+var menuIcon = document.getElementById("menu-icon");
+var menuItems = document.getElementById("menu-items");
 
+menuIcon.addEventListener("click", function () {
+    menuItems.classList.toggle("show");
+});
 </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -861,6 +869,79 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
 }
  body {
   font-family: 'Montserrat', sans-serif;
+}
+.navbar {
+    background-color: #ffffff;
+    padding: 20px 30px 20px 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.site-name {
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-icon {
+    display: none; /* Hide by default on larger screens */
+    cursor: pointer;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    margin: 0 10px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.menu-items a:hover {
+    background-color: #f5f5f5;
+}
+
+.content {
+    padding: 20px;
+    margin-top: 60px; /* Adjust this margin based on your navbar height */
+}
+
+/* Media query for mobile responsiveness */
+@media screen and (max-width: 600px) {
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+    }
+
+    .menu-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background-color: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-items a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-items.show {
+        display: flex;
+    }
 }
 .fb-comments{
 	display:block;
