@@ -277,7 +277,7 @@ $("input#wosearch").keyup(function(){
 
 <style>
 html{scroll-behavior: smooth;}
-:root { --wotheme:#23D160; /*#23D160;*/ }
+:root { --wotheme:#e8c14c; /*#23D160;*/ }
 .button.is-success,  .button.is-success:hover,  .button.is-success:active,  .button.is-success:visited {
     background-color: var(--wotheme) !important;
 }
@@ -301,13 +301,14 @@ html{scroll-behavior: smooth;}
   <div id="wofootsum" class="is-pulled-left" style="margin-top: calc(.300em - 1px);"></div><div class="is-pulled-right"><a href="#addr" class="button is-success"><i class="has-text-white fa fa-shopping-cart"></i></a></div>
 </div>
 <div class="navbar" id="navbar">
-    <div class="site-name">Manis . Coffee</div>
+    <div class="site-name">Manis <a href="http://manis.coffee" style="color:#ce3232;">.</a> Coffee</div>
     <div class="menu-icon" id="menu-icon">&#9776;</div>
     <div style="font-size: 12px;" class="menu-items" id="menu-items">
-                        <a  href="#about" class="smoothScroll"><b>ABOUT</b></a>
-                         <a href="#menu" class="smoothScroll"><b>MENU</b></a>
-                         <a href="#contact" class="smoothScroll"><b>CONTACT</b></a>
-                         <a href="#footer" class="smoothScroll"><b>BUSINESS</b></a>
+                        <a  href="http://manis.coffee/#about" class="smoothScroll"><b>ABOUT</b></a>
+                         <a href="" class="smoothScroll"><b>MENU</b></a>
+                         <a href="http://manis.coffee#contact" class="smoothScroll"><b>CONTACT</b></a>
+                         <a href="manis.coffee/#footer" class="smoothScroll"><b>BUSINESS</b></a>
+        <button style="margin:0 50px 0 50px;color:white; padding: 12px; background: #ce3232; border: none;"onclick="showStext();"><b>SEARCH</b></button>
     </div>
 </div>
 
@@ -317,8 +318,7 @@ html{scroll-behavior: smooth;}
 <div class="column is-two-thirds">
 
 <div class="tabs has-background-white" style="z-index:10;position:-webkit-sticky;position:sticky;top:0;border-top:#000 solid 1px;">
-
- <div id="wosearchdiv" class="tabs" style="display:none; margin-bottom:0rem; width:100%;"><input name="wosearch" id="wosearch" type="text" style="width:100%;border:0;padding-left: calc(.625em - 1px);" placeholder="Type search text here..." spellcheck="false" data-ms-editor="true"><a onclick="showStext();">X</a></div>
+     <div id="wosearchdiv" class="tabs" style="display:none; margin-bottom:0rem; width:100%;"><input name="wosearch" id="wosearch" type="text" style="width:100%;border:0;padding-left: calc(.625em - 1px);" placeholder="Type search text here..." spellcheck="false" data-ms-editor="true"><a onclick="showStext();">X</a></div>
 
   <ul id="catList">
     <li style="z-index:100;position:-webkit-sticky;position:sticky;left:0;"><a style="border-style:none;" onclick="showStext();"><svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fa" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><i class="fa fa-search"></i></a></li>
@@ -879,7 +879,7 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
 .site-name {
