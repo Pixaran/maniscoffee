@@ -7,22 +7,27 @@
   </url>
   <url>
     <loc>https://www.manis.coffee/order</loc>
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2024-01-12</lastmod>
     <changefreq>daily</changefreq>
   </url>  
   <url>
     <loc>https://www.manis.coffee/#contact</loc>
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2024-01-12</lastmod>
     <changefreq>daily</changefreq>
   </url>  
   <url>
     <loc>https://www.manis.coffee/T&amp;C.pdf</loc>
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2024-01-12</lastmod>
     <changefreq>monthly</changefreq>
   </url>  
+    <url>
+    <loc>https://www.manis.coffee/pageone</loc>
+    <lastmod>2024-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+  </url> 
   <url>
     <loc>https://www.manis.coffee/#faq</loc>
-    <lastmod>2022-03-02</lastmod>
+    <lastmod>2024-01-12</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>
