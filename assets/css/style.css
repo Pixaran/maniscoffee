@@ -149,7 +149,7 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
 
         .marquee-content {
             white-space: nowrap;
-            animation: marquee-slide 10s linear infinite;
+            animation: marquee-slide 15s linear infinite;
         }
 
         @keyframes marquee-slide {
