@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+        <link rel="icon" href="https://manis.coffee/assets/images/th.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maniscoffee-pageone</title>
      <link rel="stylesheet" href="https://manis.coffee/assets/css/font-awesome.min.css">
 </head>
-<style type="text/css">    
+<style>    
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
@@ -69,16 +70,7 @@ p{
             transition: color 0.3s ease; 
            animation: slideIn 1s ease-in-out forwards;
         }
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+
         .social-links a:hover {
             color: #3498; }
 
@@ -95,10 +87,10 @@ p{
         66.66% {
             content: "Coffee Supplier";  }
         100% {
-            content: "Coffee Specialists";  }
+            content: "Merchandile Experts";  }
    }
 .button {
-  color: white;
+  color: #555555;
   border-radius: 0.5rem;
   padding: 16px 32px;
   text-align: center;
@@ -107,7 +99,7 @@ p{
   font-size: 16px;
   transition-duration: 0.4s;
   cursor: pointer;
-  color: #555555;
+  background-color: whitesmoke;
   border: 3px solid #555555;
   margin-bottom: 50px;
 }
@@ -115,14 +107,27 @@ p{
   background-color: #555555;
   color: white;
 }
+        .popup {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            opacity: 1;
+            transition: opacity 3s;
+        }
         </style>
 <body>
-
+    <div id="popup" class="popup">
+        Thankyou For Contacting Us!
+    </div>
 <div class="portfolio">
     <div class="profile-pic">
         <img src="assets/Manislogo.jpg">
     </div>
-    <h1><b>Manis Coffee</b></h1>
+    <h1><b><a style="text-decoration-line: none;"href="https://manis.coffee">Manis Coffee</a></b></h1>
     <p><span id="spin"></span></p>
     <button onclick="window.location.href='assets/Manis.vcf';" class="button button"><i class="fa fa-phone"></i><b> Contact us</b></button>
     <div class="social-links">
@@ -132,5 +137,10 @@ p{
         <a href="mailto:maniscoffee@skiff.com"><i class="fa fa-envelope"></i></a>
     </div>
 </div>
+<script>
+        setTimeout(function() {
+            var popup = document.getElementById('popup');
+            popup.style.opacity = 0;
+        }, 3000);</script>
 </body>
 </html>

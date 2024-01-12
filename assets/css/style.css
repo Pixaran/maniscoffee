@@ -97,7 +97,7 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
   }
   section {
     position: relative;
-    padding: 60px 0;
+    padding: 30px 0;
   }
   #team,
   #menu,
@@ -139,7 +139,27 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
 }
 
 /*--MENU--*/
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            background-color: #ffd454;
+            color: #fff;
+            padding: 10px;
+        }
 
+        .marquee-content {
+            white-space: nowrap;
+            animation: marquee-slide 10s linear infinite;
+        }
+
+        @keyframes marquee-slide {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
   .custom-navbar {
     border: none;
     margin-bottom: 0;
@@ -315,6 +335,9 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
   #menu .container {
     width: 100%;
   }
+    #combi .container {
+    padding: 0px;
+  }
   #menu .col-md-4 {
     margin: 0;
     padding: 0;
@@ -468,6 +491,9 @@ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+
   @media only screen and (max-width: 992px) {
     section {
       padding: 25px 10px;
+    }
+        section #combi {
+      padding:5px;
     }
     .custom-navbar .section-btn {
       margin-left: 1em;
@@ -655,6 +681,7 @@ color: #fff;
 display: flex;
 justify-content: center;
 flex-direction: column;
+padding: 20px 0;
 }
 .hr-line{
   width: 60%;
