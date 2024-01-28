@@ -9,7 +9,7 @@
 <body>
     <div class="container">  
 		
-        <form id="contact" name="contact" action="https://airform.io/maniscoffee@skiff.com" method="POST">
+        <form id="contact" name="contact" action="https://script.google.com/macros/s/AKfycbxIPqH0UNW6mPaUudz359Rmu8VkbFoliCd0q-tscrsAvOBCwYIAumRlXmGIz44taV_Y/exec" method="POST">
 			<h3>Your Feedback</h3>
           <h4>Give a Rating & Review, and help us to improve more!</h4>
           <fieldset>
@@ -17,9 +17,6 @@
           </fieldset>
           <fieldset>
             <input placeholder="Your Email Address" name="email" type="email" tabindex="2" required>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Subject" name="Subject" type="Subject" tabindex="3" required>
           </fieldset>
                    <p style="color: grey;">Rate Us *</p> <fieldset class="rating">  <input type="radio" name="rating" value="5" id="5" required><label for="5">☆</label>
   <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
@@ -30,7 +27,7 @@
           <fieldset>
             <textarea placeholder="Type your Feedback Here...." tabindex="4" name="Message" required></textarea>
           </fieldset>
-
+<input style="display: none;" name="Date" value="=NOW()">
           <fieldset>
             <button name="submit" onclick="submit()"
 
